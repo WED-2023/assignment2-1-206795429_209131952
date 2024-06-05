@@ -2,10 +2,12 @@
   <div class="container">
     <h1 class="title">Register</h1>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
+     
+     
       <b-form-group
         id="input-group-username"
         label-cols-sm="3"
-        label="Username:"
+        label="User name:"
         label-for="username"
       >
         <b-form-input
@@ -15,13 +17,54 @@
           :state="validateState('username')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.username.required">
-          Username is required
+          User name is required
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-else-if="!$v.form.username.length">
-          Username length should be between 3-8 characters long
+          User name length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
+          User name alpha
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
+      <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First name:"
+        label-for="firstName"
+      >
+        <b-form-input
+          id="firstname"
+          v-model="$v.form.firstName.$model"
+          type="text"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          First name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          First name alpha
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+            <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last name:"
+        label-for="lastName"
+      >
+        <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          Last name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          Last name alpha
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -87,6 +130,23 @@
           v-else-if="!$v.form.confirmedPassword.sameAsPassword"
         >
           The confirmed password is not equal to the original password
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+        <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+      >
+        <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="text"
+          :state="validateState('email')"
+        ></b-form-input>
+            <b-form-invalid-feedback v-if="!$v.form.email.required">
+          Email is required
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -156,6 +216,14 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+        firstName: {
+        required,
+        alpha
+      },
+        lastName: {
+        required,
+        alpha
+      },
       country: {
         required
       },
@@ -166,6 +234,9 @@ export default {
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+        email: {
+        required
       }
     }
   },

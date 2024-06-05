@@ -1,17 +1,23 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
-      <span v-if="!$root.store.username">
-        Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
-      </span>
-      <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
-      </span>
+       <div class="nav-container">
+        <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
+        <router-link :to="{ name: 'search' }">Search</router-link>|
+        <router-link :to="{ name: 'about' }">About</router-link>|
+        {{ !$root.store.username }}
+        <span v-if="!$root.store.username">
+          Hello Guest!
+          <router-link :to="{ name: 'register' }">Register</router-link>|
+          <router-link :to="{ name: 'login' }">Login</router-link>|
+        </span>
+        <span v-else>
+          Hello {{username}} 
+          {{ $root.store.username }}: 
+          <button @click="Logout">Logout</button>|
+          <router-link :to="{ name: 'createnewrecipe' }">Create New Recipe</router-link>|
+        </span>
+       </div>
     </div>
     <router-view />
   </div>
@@ -28,9 +34,11 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
-    }
+   }
+    
   }
 };
+
 </script>
 
 <style lang="scss">
@@ -45,7 +53,20 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  z-index: 9999;
+  align-items: center;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Evenly distribute items across the width */
+  align-items: center;
+  max-width: 1200px; /* Limit the maximum width of the navigation */
+  margin: 0 auto; /* Center the navigation horizontally */
+  padding: 0 20px; /* Adjust padding as needed */
 }
 
 #nav a {

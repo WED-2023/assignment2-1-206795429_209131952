@@ -13,6 +13,8 @@
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
+        <li>{{ recipe.gluten }} gluten</li>
+        <li>{isFavorite ? '★' : '☆'}</li>
       </ul>
     </div>
   </router-link>
