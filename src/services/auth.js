@@ -28,4 +28,13 @@
 
   }
   
+  
+  export function mockSearch(Usersearch, success = true) {
+
+    if (!success) {
+      throw { status: 409, response: { data: { message: "Recipe is not found", success: false } } };
+    }
+  
+    return { status: 200, response: { data: { message: "Recipe is found", success: true}} };
+  }
 
