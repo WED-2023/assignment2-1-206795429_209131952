@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-       <div class="nav-container">
-        <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-        <router-link :to="{ name: 'search' }">Search</router-link>|
-        <router-link :to="{ name: 'about' }">About</router-link>|
-        {{ !$root.store.username }}
-        <span v-if="!$root.store.username">
-          Hello Guest!
-          <router-link :to="{ name: 'register' }">Register</router-link>|
-          <router-link :to="{ name: 'login' }">Login</router-link>|
-        </span>
-        <span v-else>
-          Hello {{username}} 
-          {{ $root.store.username }}: 
-          <div>
-            <b-dropdown :text="$root.store.username" class="m-md-2">
-            <b-dropdown-item><router-link :to="{ name: 'favoriteRecipes' }">My favorite recipes</router-link></b-dropdown-item>
-            <b-dropdown-item><router-link :to="{ name: 'myRecipes' }">My recipes</router-link></b-dropdown-item>
-            <b-dropdown-item><router-link :to="{ name: 'myFamilyRecipes' }">My family recipes</router-link></b-dropdown-item>
-            <b-dropdown-divider></b-dropdown-divider>
-          </b-dropdown>
-        </div>
-          <button @click="Logout">Logout</button>|
-          <b-button v-b-modal.modal-prevent-closing>Add New Recipe</b-button>
-        </span>
-       </div>
-    </div>
+    <b-navbar toggleable="lg" type="dark" variant="info" class="sticky-top">
+      <b-navbar-brand :to="{ name: 'main' }">Vue Recipes</b-navbar-brand>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
+          <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
+        </b-navbar-nav>
+        <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
+          <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
+          <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
+        </b-navbar-nav>
+        <b-navbar-nav class="ml-auto" v-else>
+          <b-nav-item-dropdown right>
+            <template #button-content>
+              {{ $root.store.username }}
+            </template>
+            <b-dropdown-item :to="{ name: 'favoriteRecipes' }">My favorite recipes</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'myRecipes' }">My recipes</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'myFamilyRecipes' }">My family recipes</b-dropdown-item>
+          </b-nav-item-dropdown>
+            <b-nav-item @click="Logout">Logout</b-nav-item>
+           <b-nav-item> <b-button v-b-modal.modal-prevent-closing>Add New Recipe</b-button></b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
     <router-view />
     
     <b-modal
@@ -204,5 +202,11 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#nav.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Adjust as needed */
 }
 </style>
