@@ -2,6 +2,6 @@
   <div class="container">
     <br>
     <br>
-    <h1 class="title">New Recipe</h1>
+    <h1 class="title">My Family Recipes</h1>
   </div>
 </template>
