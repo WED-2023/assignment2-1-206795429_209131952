@@ -13,7 +13,7 @@
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
-        <li>{{ recipe.gluten }} gluten</li>
+        <li><img v-if="recipe.vegetarian_load" :src="recipe.image" class="recipe-image" ></li>
         <li>{isFavorite ? '★' : '☆'}</li>
       </ul>
     </div>
@@ -25,11 +25,16 @@ export default {
   mounted() {
     this.axios.get(this.recipe.image).then((i) => {
       this.image_load = true;
+      
+    });
+    this.axios.get(this.recipe.vegetarian).then((i) => {
+      this.vegetarian_load = i;
+      
     });
   },
   data() {
     return {
-      image_load: false
+      image_load: true
     };
   },
   props: {
@@ -85,7 +90,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 98%;
+  width: 70%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;

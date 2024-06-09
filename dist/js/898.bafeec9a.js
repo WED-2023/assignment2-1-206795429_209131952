@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkassignment_2_1"]=self["webpackChunkassignment_2_1"]||[]).push([[898],{6898:(s,t,e)=>{e.r(t),e.d(t,{default:()=>c});var n=function(){var s=this;s._self._c;return s._m(0)},a=[function(){var s=this,t=s._self._c;return t("div",{staticClass:"container"},[t("br"),t("br"),t("h1",{staticClass:"title"},[s._v("My Favorite Recipes")])])}],i=e(1001),l={},r=(0,i.Z)(l,n,a,!1,null,null,null);const c=r.exports}}]);
-//# sourceMappingURL=898.7431b86c.js.map
+//# sourceMappingURL=898.bafeec9a.js.map
