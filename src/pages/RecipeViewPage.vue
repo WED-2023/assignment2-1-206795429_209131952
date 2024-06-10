@@ -11,6 +11,21 @@
             <div class="mb-3">
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
               <div>Likes: {{ recipe.aggregateLikes }} likes</div>
+              <div>Servings: {{ recipe.servings }}</div>
+              <div class="logo-container">
+              <div v-if="recipe.vegetarian">
+                <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
+              </div>
+              <div v-if="recipe.vegan">
+                <img src="../assets/vegan_logo.jpg" class="tiny_logo" />
+              </div>
+              <div v-if="recipe.glutenFree">
+                <img src="../assets/gluten_free.png" class="tiny_logo" />
+              </div>
+              <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
+                  <b-icon :icon="icon" class="no-background"></b-icon>
+              </button>
+              </div>
             </div>
             Ingredients:
             <ul>
@@ -22,12 +37,13 @@
               </li>
             </ul>
           </div>
+        </div>
           <div class="wrapped">
             Instructions:
             <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">
-                {{ s.step }}
-              </li>
+               <li v-for="(step, index) in recipe._instructions" :key="index">
+                  {{ step.step }}
+               </li>
             </ol>
           </div>
         </div>
@@ -38,7 +54,6 @@
     </pre
       > -->
     </div>
-  </div>
 </template>
 
 <script>
@@ -46,7 +61,8 @@ import { mockGetRecipeFullDetails } from "../services/recipes.js";
 export default {
   data() {
     return {
-      recipe: null
+       isFull: false,
+      recipe: {}
     };
   },
   async created() {
@@ -79,15 +95,23 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
+        vegetarian,
+        vegan,
+        glutenFree,
+        servings,
         title
       } = response.data.recipe;
 
-      let _instructions = analyzedInstructions
-        .map((fstep) => {
-          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-          return fstep.steps;
-        })
-        .reduce((a, b) => [...a, ...b], []);
+      // let _instructions = analyzedInstructions
+      //   .map((fstep) => {
+      //     fstep.steps[0].step = fstep.name + fstep.steps[0].step;
+      //     return fstep.steps;
+      //   })
+      //   .reduce((a, b) => [...a, ...b], []);
+      let _instructions = analyzedInstructions.map((step, index) => ({
+  number: index + 1,
+  step: step
+}));
 
       let _recipe = {
         instructions,
@@ -97,6 +121,10 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
+        vegetarian,
+        vegan,
+        glutenFree,
+        servings,
         title
       };
 
@@ -104,7 +132,17 @@ export default {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
+    computed: {
+    icon() {
+      return this.isFull ? 'star-fill' : 'star';
+    }
+  },
+    methods: {
+    toggleIcon() {
+      this.isFull = !this.isFull;
+    },
+    }
 };
 </script>
 
@@ -124,4 +162,22 @@ export default {
 /* .recipe-header{
 
 } */
+.tiny_logo {
+  width:35px;
+  height: 35px;
+}
+
+.logo-container {
+  display: flex;
+}
+.logo-container > div {
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.no-background {
+  background-color: transparent;
+  color: #f0ad4e;
+  font-size: 2rem;
+}
+
 </style>
