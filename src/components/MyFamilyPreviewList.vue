@@ -6,19 +6,19 @@
       </h3>
       <b-row>
         <b-col v-for="r in recipes" :key="r.id">
-          <RecipePreview class="recipePreview" :recipe="r" />
+          <RecipeMinimalPreview class="recipePreview" :recipe="r" />
         </b-col>
       </b-row>
     </b-container>
   </template>
   
   <script>
-  import RecipePreview from "./RecipePreview.vue";
+  import RecipeMinimalPreview from "./RecipeMinimalPreview.vue";
   import { mockGetMyFamilyRecipesPreview } from "../services/recipes.js";
   export default {
     name: "MyFamilyRecipePreviewList",
     components: {
-      RecipePreview
+      RecipeMinimalPreview
     },
     props: {
       title: {

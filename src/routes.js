@@ -33,6 +33,12 @@ const routes = [
     name: "recipe",
     component: () => import("./pages/RecipeViewPage"),
   },
+
+  {
+    path: "/RecipeMinimalViewPage",
+    name: "recipe_minimal",
+    component: () => import("./pages/RecipeMinimalViewPage.vue"),
+  },
   {
     path: "*",
     name: "notFound",
