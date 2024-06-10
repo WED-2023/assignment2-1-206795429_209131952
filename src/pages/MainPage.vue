@@ -5,12 +5,10 @@
     <h1 class="title">Main Page</h1>
     <div class = "columns">
       <div class = "left-column">
-        <RecipePreviewList title="Explore this Recipes" class="RandomRecipes center" />
         <div class="button-container">
-        <button @click="toggleRandom" class="icon-button" style="margin: 0 auto;">
-          Click here for random recipe
-        </button>
-      </div>
+          <button @click="fetchRandomRecipe">Random Recipe</button>
+        </div>
+        <RecipePreviewList title="Explore this Recipes" class="RandomRecipes center" />
       </div>
       <div class = "right-column">
 
@@ -44,9 +42,11 @@ export default {
     RecipePreviewList
   },
   methods: {
-    toggleRandom() {
-      console.log('Button clicked');
-    },
+    fetchRandomRecipe() {
+      // Fetch random recipe logic goes here
+      // You can make an API call to get a random recipe
+      // Update the RecipePreviewList component with the fetched recipe
+    }
   }
 };
 </script>
@@ -88,18 +88,5 @@ export default {
   align-items: center;
   margin-top: 20px; /* Adjust as needed */
 }
-
-.icon-button {
-  background-color: grey;
-  border: none;
-  padding: 10px 20px;
-  color: white;
-  cursor: pointer;
-}
-
-.icon-button:hover {
-  background-color: darkgrey;
-}
-
 
 </style>
