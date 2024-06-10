@@ -118,18 +118,11 @@ export default {
 }
 
 .recipe-preview .recipe-body .recipe-image {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  display: block;
-  width: 60%;
-  height: auto;
+  margin: 0 auto; /* Center the image horizontally */
+  width: 100%; /* Set the width to fill the container */
+  height: 200px; /* Fixed height for all images */
+  object-fit: cover; /* Ensure the image covers the entire container */
   border-radius: 15px; /* Added border-radius for rounded edges */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  transition: transform 0.3s ease;
 }
 
 .recipe-preview .recipe-body:hover .recipe-image {

@@ -59,7 +59,7 @@
   </script>
   
   <style lang="scss" scoped>
-  .container {
+  .b-container {
     min-height: 400px;
   }
   </style>

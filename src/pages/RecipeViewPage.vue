@@ -188,5 +188,9 @@ export default {
   color: #f0ad4e;
   font-size: 2rem;
 }
+.recipe-header img {
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+}
 
 </style>
