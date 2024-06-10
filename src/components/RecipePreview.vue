@@ -1,11 +1,12 @@
 <template>
+  <div class="recipe-preview">
   <router-link
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-    class="recipe-preview"
   >
-    <div class="recipe-body">
+    <div class="recipe-body" >
       <img v-if="image_load" :src="recipe.image" class="recipe-image" />
     </div>
+  </router-link>
     <div class="recipe-footer">
       <div :title="recipe.title" class="recipe-title">
         {{ recipe.title }}
@@ -23,12 +24,12 @@
           <img src="src/assets/gluten_free.png" class="tiny_logo" />
         </li>
         <li>
-          <b-button @click="toggleIcon" title="Strikethrough">
-            <b-icon :icon="icon" aria-hidden="true"></b-icon>
-        </b-button></li>
+          <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
+    <b-icon :icon="icon" class="no-background"></b-icon>
+  </button></li>
       </ul>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
@@ -52,7 +53,8 @@ export default {
       type: Object,
       required: true
     },
-    computed: {
+  },
+  computed: {
     icon() {
       return this.isFull ? 'star-fill' : 'star';
     }
@@ -62,6 +64,7 @@ export default {
       this.isFull = !this.isFull;
     }
   }
+  
 
     // id: {
     //   type: Number,
@@ -86,7 +89,7 @@ export default {
     //     return undefined;
     //   }
     // }
-  }
+  
 };
 </script>
 
@@ -170,4 +173,32 @@ export default {
   width:20px;
   height: 20px;
 }
+
+/* .icon-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  outline: none; 
+  border-color: transparent;
+  border: 1px solid transparent;
+} */
+
+.no-background {
+  background-color: transparent;
+  color: #f0ad4e;
+  font-size: 1.5rem; 
+}
+/* .icon-button:focus {
+  background-color: transparent !important; 
+  border-color: transparent; 
+  border: 1px solid transparent; 
+
+
+}
+.icon-button:hover {
+  background-color: transparent !important; 
+  border-color: transparent !important;
+  border: 1px solid transparent; 
+} */
+
 </style>
