@@ -1,7 +1,8 @@
 <template>
-  <div class="recipe-preview">
+  <div class="recipe-preview" :class="{'viewed': isViewed}">
   <router-link
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+    @click.native="markRecipeAsViewed"
   >
     <div class="recipe-body" >
       <img :src="recipe.image" class="recipe-image" />
@@ -37,7 +38,8 @@ import { computed } from 'vue';
 export default {
   data() {
     return {
-      isFull: false
+      isFull: false,
+      isViewed: false
 
     };
   },
@@ -55,8 +57,24 @@ export default {
   methods: {
     toggleIcon() {
       this.isFull = !this.isFull;
+    },
+  markRecipeAsViewed() {
+      this.isViewed = true;
+      sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');
+  },
+  checkIfViewed() {
+    // this.isViewed = false;
+    const viewed = sessionStorage.getItem(`recipe-viewed-${this.recipe.id}`);
+    if (viewed) {
+      this.isViewed = true;
     }
   }
+  },
+  created() {
+    this.checkIfViewed();
+  },
+};
+
  
 
     // id: {
@@ -83,16 +101,15 @@ export default {
     //   }
     // }
  
-};
 </script>
 
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   height: 100%;
   position: relative;
-  margin: 10px 10px;
+  margin: 10px 0;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -123,14 +140,22 @@ export default {
   padding: 10px 10px;
   width: 100%;
   font-size: 12pt;
-  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  text-align: center;
+
 }
 
-.recipe-preview .recipe-footer ul.recipe-overview {
+.recipe-preview.viewed .recipe-footer .recipe-title,
+.recipe-preview.viewed .recipe-footer ul.recipe-overview li {
+  color: purple; /* Change font color to purple */
+  font-weight: bold; /* Make font bold */
+}
+
+
+/* .recipe-preview .recipe-footer ul.recipe-overview {
   padding: 5px 10px;
   width: 100%;
   display: -webkit-box;
@@ -160,38 +185,32 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
-}
-
-.tiny_logo {
-  width:30px;
-  height: 30px;
-}
-
-/* .icon-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  outline: none;
-  border-color: transparent;
-  border: 1px solid transparent;
 } */
+
+.recipe-preview .recipe-footer ul.recipe-overview {
+  padding: 5px 10px;
+  width: 100%;
+  display: flex; /* Changed to flex to avoid overflow */
+  table-layout: fixed;
+  list-style-type: none; /* Remove bullet points */
+  margin-bottom: 0px;
+  font-size: 10pt;
+}
+
+.recipe-preview .recipe-footer ul.recipe-overview li {
+  flex: 1; /* Use flex property to distribute width */
+  text-align: center;
+}
+.tiny_logo {
+  width:25px;
+  height: 25px;
+}
+
 
 .no-background {
   background-color: transparent;
   color: #f0ad4e;
   font-size: 1.5rem;
 }
-/* .icon-button:focus {
-  background-color: transparent !important;
-  border-color: transparent;
-  border: 1px solid transparent;
-
-
-}
-.icon-button:hover {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  border: 1px solid transparent;
-} */
 
 </style>
