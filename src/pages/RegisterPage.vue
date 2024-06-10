@@ -148,6 +148,9 @@
             <b-form-invalid-feedback v-if="!$v.form.email.required">
           Email is required
         </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.email.email">
+          Invalid email address
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
@@ -236,7 +239,8 @@ export default {
         sameAsPassword: sameAs("password")
       },
         email: {
-        required
+        required,
+        email
       }
     }
   },
@@ -308,4 +312,5 @@ export default {
 .container {
   max-width: 500px;
 }
+
 </style>

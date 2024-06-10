@@ -125,9 +125,15 @@ export default {
   display: block;
   width: 60%;
   height: auto;
+  border-radius: 15px; /* Added border-radius for rounded edges */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+  transition: transform 0.3s ease;
+}
+
+.recipe-preview .recipe-body:hover .recipe-image {
+  transform: scale(1.1); /* Scale the image on hover */
 }
 
 .recipe-preview .recipe-footer {

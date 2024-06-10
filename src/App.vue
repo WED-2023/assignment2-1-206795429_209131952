@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info" class="sticky-top">
-      <b-navbar-brand :to="{ name: 'main' }">Vue Recipes</b-navbar-brand>
+      <img src="../src/logo.png" class="logo">
+      <b-navbar-brand :to="{ name: 'main' }" class="navbar-brand" >Foody Shmoody Main</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
+          <b-nav-text>Hello Guest!</b-nav-text>
           <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
         </b-navbar-nav>
@@ -21,7 +23,7 @@
             <b-dropdown-item :to="{ name: 'myFamilyRecipes' }">My family recipes</b-dropdown-item>
           </b-nav-item-dropdown>
             <b-nav-item @click="Logout">Logout</b-nav-item>
-           <b-nav-item> <b-button v-b-modal.modal-prevent-closing>Add New Recipe</b-button></b-nav-item>
+           <b-nav-item> <nav-button v-b-modal.modal-prevent-closing>Add New Recipe</nav-button></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -208,5 +210,46 @@ export default {
   position: sticky;
   top: 0;
   z-index: 1000; /* Adjust as needed */
+}
+
+.nav-icon {
+  width: 70px; /* Adjust the width of the logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.navbar-brand {
+  padding-right: 50px; /* Adjust the padding to create space for the logo */
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px; /* Adjust the width of the logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Adjust navbar padding to prevent overlap */
+.b-navbar {
+  padding-left: 100px; /* Adjust as needed based on the logo width */
+}
+
+
+.nav-button {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}
+
+.navbar-brand {
+  padding-left: 60px; /* Adjust the padding to create space for the logo */
+}
+
+.b-navbar-nav {
+  margin-left: auto; /* Align navbar items to the right */
 }
 </style>
