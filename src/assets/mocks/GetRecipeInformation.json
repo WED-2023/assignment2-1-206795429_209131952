@@ -1,5 +1,5 @@
 {
-    "vegetarian": false,
+    "vegetarian": true,
     "vegan": false,
     "glutenFree": false,
     "dairyFree": false,

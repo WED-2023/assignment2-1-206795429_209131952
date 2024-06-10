@@ -13,35 +13,55 @@
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
-        <li><img v-if="recipe.vegetarian_load" :src="recipe.image" class="recipe-image" ></li>
-        <li>{isFavorite ? '★' : '☆'}</li>
+        <li v-if="this.recipe.vegetarian">
+          <img src="src/assets/vegetarian-logo.png" class="tiny_logo" />
+        </li>
+        <li v-if="this.recipe.vegan">
+          <img src="src/assets/vegan_logo.png" class="tiny_logo" />
+        </li>
+        <li v-if="this.recipe.glutenFree">
+          <img src="src/assets/gluten_free.png" class="tiny_logo" />
+        </li>
+        <li>
+          <b-button @click="toggleIcon" title="Strikethrough">
+            <b-icon :icon="icon" aria-hidden="true"></b-icon>
+        </b-button></li>
       </ul>
     </div>
   </router-link>
 </template>
 
 <script>
+import { computed } from 'vue';
 export default {
   mounted() {
     this.axios.get(this.recipe.image).then((i) => {
       this.image_load = true;
       
     });
-    this.axios.get(this.recipe.vegetarian).then((i) => {
-      this.vegetarian_load = i;
-      
-    });
   },
   data() {
     return {
-      image_load: true
+      image_load: true,
+      isFull: false
+
     };
   },
   props: {
     recipe: {
       type: Object,
       required: true
+    },
+    computed: {
+    icon() {
+      return this.isFull ? 'star-fill' : 'star';
     }
+  },
+  methods: {
+    toggleIcon() {
+      this.isFull = !this.isFull;
+    }
+  }
 
     // id: {
     //   type: Number,
@@ -90,7 +110,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 70%;
+  width: 60%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -144,5 +164,10 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+.tiny_logo {
+  width:20px;
+  height: 20px;
 }
 </style>
