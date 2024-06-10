@@ -20,5 +20,16 @@
         "vegan": false,
         "glutenFree": true,
         "summary": "Molokhia is a traditional Middle Eastern dish made from jute leaves. One serving contains <b>180 calories</b>, <b>12g of protein</b>, and <b>8g of fat</b>. For <b>$1.80 per serving</b>, this recipe <b>covers 20%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A combination of molokhia leaves, chicken, garlic, and spices makes this dish both nutritious and flavorful. 200 people have tried and liked this recipe. It is brought to you by middleeasternrecipes.com. From preparation to the plate, this recipe takes approximately <b>60 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 90%</b>, which is excellent. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/molokhia-1234567\">Molokhia</a>, <a href=\"https://spoonacular.com/recipes/molokhia-with-chicken-1223456\">Molokhia with Chicken</a>, and <a href=\"https://spoonacular.com/recipes/egyptian-molokhia-1223345\">Egyptian Molokhia</a>."
-    }
+    },
+    {
+        "id": 123456,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReeyrz74ml6HLm8t_dsQTNzuOlQdmkLDmJLw&s",
+        "title": "Ma'amoul Cookies",
+        "readyInMinutes": 60,
+        "aggregateLikes": 200,
+        "vegetarian": true,
+        "vegan": false,
+        "glutenFree": false,
+        "summary": "Indulge in the delightful taste of Ma'amoul Cookies, a traditional Middle Eastern treat. Each serving provides <b>150 calories</b>, <b>2g of protein</b>, and <b>8g of fat</b>. At just <b>$0.50 per serving</b>, this recipe satisfies 10% of your daily nutritional needs. This recipe serves 12. These cookies are filled with a mixture of dates, nuts, and spices, creating a heavenly combination of flavors. 200 people have enjoyed and recommended this recipe. It's presented by middleeasternrecipes.com. From start to finish, these cookies take approximately <b>60 minutes</b> to make. Considering various factors, this recipe receives a spoonacular score of <b>90%</b>, indicating its high quality. If you love this recipe, explore these similar options: <a href=\"https://spoonacular.com/recipes/date-filled-cookies-789012\">Date Filled Cookies</a>, <a href=\"https://spoonacular.com/recipes/rose-water-cookies-789123\">Rose Water Cookies</a>, and <a href=\"https://spoonacular.com/recipes/pistachio-shortbread-cookies-789234\">Pistachio Shortbread Cookies</a>."
+      }
 ]
