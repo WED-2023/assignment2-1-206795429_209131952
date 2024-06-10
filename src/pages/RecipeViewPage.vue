@@ -88,6 +88,14 @@ export default {
         return;
       }
 
+      const recipes = response.data.recipe; // Get the array of recipes
+      const recipe = recipes.find(r => r.id === parseInt(this.$route.params.recipeId));
+      
+      if (!recipe) {
+      this.$router.replace("/NotFound");
+      return;
+    }
+
       let {
         analyzedInstructions,
         instructions,
@@ -100,7 +108,7 @@ export default {
         glutenFree,
         servings,
         title
-      } = response.data.recipe;
+      } = recipe;
 
       // let _instructions = analyzedInstructions
       //   .map((fstep) => {
