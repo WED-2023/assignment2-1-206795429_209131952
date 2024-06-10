@@ -4,7 +4,7 @@
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
   >
     <div class="recipe-body" >
-      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+      <img :src="recipe.image" class="recipe-image" />
     </div>
   </router-link>
     <div class="recipe-footer">
@@ -15,13 +15,13 @@
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
         <li v-if="this.recipe.vegetarian">
-          <img src="src/assets/vegetarian-logo.png" class="tiny_logo" />
+          <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
         </li>
         <li v-if="this.recipe.vegan">
-          <img src="src/assets/vegan_logo.png" class="tiny_logo" />
+          <img src="../assets/vegan_logo.jpg" class="tiny_logo" />
         </li>
         <li v-if="this.recipe.glutenFree">
-          <img src="src/assets/gluten_free.png" class="tiny_logo" />
+          <img src="../assets/gluten_free.png" class="tiny_logo" />
         </li>
         <li>
           <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
@@ -35,15 +35,8 @@
 <script>
 import { computed } from 'vue';
 export default {
-  mounted() {
-    this.axios.get(this.recipe.image).then((i) => {
-      this.image_load = true;
-      
-    });
-  },
   data() {
     return {
-      image_load: true,
       isFull: false
 
     };
@@ -64,7 +57,7 @@ export default {
       this.isFull = !this.isFull;
     }
   }
-  
+ 
 
     // id: {
     //   type: Number,
@@ -89,7 +82,7 @@ export default {
     //     return undefined;
     //   }
     // }
-  
+ 
 };
 </script>
 
@@ -170,15 +163,15 @@ export default {
 }
 
 .tiny_logo {
-  width:20px;
-  height: 20px;
+  width:30px;
+  height: 30px;
 }
 
 /* .icon-button {
   background-color: transparent;
   border: none;
   padding: 0;
-  outline: none; 
+  outline: none;
   border-color: transparent;
   border: 1px solid transparent;
 } */
@@ -186,19 +179,19 @@ export default {
 .no-background {
   background-color: transparent;
   color: #f0ad4e;
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
 }
 /* .icon-button:focus {
-  background-color: transparent !important; 
-  border-color: transparent; 
-  border: 1px solid transparent; 
+  background-color: transparent !important;
+  border-color: transparent;
+  border: 1px solid transparent;
 
 
 }
 .icon-button:hover {
-  background-color: transparent !important; 
+  background-color: transparent !important;
   border-color: transparent !important;
-  border: 1px solid transparent; 
+  border: 1px solid transparent;
 } */
 
 </style>
