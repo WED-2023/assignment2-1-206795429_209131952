@@ -41,7 +41,7 @@
           //   this.$root.store.server_domain + "/recipes/random",
           // );
   
-          const amountToFetch = 1; // Set this to how many recipes you want to fetch
+          const amountToFetch = 3; // Set this to how many recipes you want to fetch
           const response = mockGetMyRecipesPreview(amountToFetch);
   
   

@@ -4,16 +4,16 @@
     <br>
     <h1 class="title">My Family Recipes Page</h1>
     <div>
-        <FavoriteRecipePreviewList class="FavoriteRecipe center" />
+        <MyFamilyRecipePreviewList class="FavoriteRecipe center" />
         </div>
     </div>
 </template>
   <script>
 
-import FavoriteRecipePreviewList from "../components/FavoriteRecipePreviewList";
+import MyFamilyRecipePreviewList from "../components/MyFamilyPreviewList";
 export default {
   components: {
-    FavoriteRecipePreviewList
+    MyFamilyRecipePreviewList
   },
 };
 

@@ -9,7 +9,7 @@ import my_family_preview from "../assets/mocks/my_family_recipe_preview.json";
 export function mockGetRecipesPreview(amount = 1) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
-    recipes.push(...recipe_preview);
+    recipes.push(recipe_preview[i % recipe_preview.length]);
   }
 
   return { data: { recipes: recipes } };
@@ -19,10 +19,10 @@ export function mockGetRecipeFullDetails(recipeId) {
     return { data: { recipe: recipe_full_view } } ;
   }
 
-export function mockGetRecipesPreviewFromSearch(amount = 1) {
+export function mockGetRecipesPreviewFromSearch(amount = 5) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
-    recipes.push(...recipe_full_view);
+    recipes.push(recipe_full_view[i % recipe_preview.length]);
   }
 
   return { data: { recipes: recipes } };
@@ -31,7 +31,7 @@ export function mockGetRecipesPreviewFromSearch(amount = 1) {
 export function mockGetMyRecipesPreview(amount = 1) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
-    recipes.push(...my_recipe_preview);
+    recipes.push(my_recipe_preview[i % recipe_preview.length]);
   }
 
   return { data: { recipes: recipes } };
@@ -40,7 +40,7 @@ export function mockGetMyRecipesPreview(amount = 1) {
 export function mockGetMyFamilyRecipesPreview(amount = 1) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
-    recipes.push(...my_family_preview);
+    recipes.push(my_family_preview[i % recipe_preview.length]);
   }
 
   return { data: { recipes: recipes } };
