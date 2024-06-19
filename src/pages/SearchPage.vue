@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <h1 class="title">Search Page</h1>
-      <b-form @submit.prevent="Search">
+    <b-form @submit.prevent="Search">
       <b-form-group
         id="input-group-search"
         label-cols-sm="3"
-        label="search:"
+        label="Search:"
         label-for="search"
       >
         <b-form-input
@@ -36,31 +36,64 @@
         </b-form-select>
       </b-form-group>
       
-      <!-- Filter dropdown with checkboxes -->
+      <!-- Cuisines filter -->
       <b-form-group
-        id="input-group-filter"
+        id="input-group-cuisines"
         label-cols-sm="3"
-        label="Filter:"
-        label-for="filter"
+        label="Cuisines:"
+        label-for="cuisines"
       >
-        <b-dropdown id="filter-dropdown" text="Select Filters" no-caret>
-          <b-form-checkbox-group v-model="selectedFilters">
-            <b-form-checkbox v-for="filter in filters" :key="filter.value" :value="filter.value">
-              {{ filter.label }}
+        <b-button v-b-toggle.cuisines-collapse variant="link" class="dropdown-toggle">Select Cuisines</b-button>
+        <b-collapse id="cuisines-collapse">
+          <b-form-checkbox-group v-model="selectedCuisines" class="checkbox-group">
+            <b-form-checkbox v-for="cuisine in cuisines" :key="cuisine.value" :value="cuisine.value" class="checkbox-item">
+              {{ cuisine.label }}
             </b-form-checkbox>
           </b-form-checkbox-group>
-        </b-dropdown>
+        </b-collapse>
+      </b-form-group>
+
+      <!-- Diets filter -->
+      <b-form-group
+        id="input-group-diets"
+        label-cols-sm="3"
+        label="Diets:"
+        label-for="diets"
+      >
+        <b-button v-b-toggle.diets-collapse variant="link" class="dropdown-toggle">Select Diets</b-button>
+        <b-collapse id="diets-collapse">
+          <b-form-checkbox-group v-model="selectedDiets" class="checkbox-group">
+            <b-form-checkbox v-for="diet in diets" :key="diet.value" :value="diet.value" class="checkbox-item">
+              {{ diet.label }}
+            </b-form-checkbox>
+          </b-form-checkbox-group>
+        </b-collapse>
+      </b-form-group>
+
+      <!-- Intolerances filter -->
+      <b-form-group
+        id="input-group-intolerances"
+        label-cols-sm="3"
+        label="Intolerances:"
+        label-for="intolerances"
+      >
+        <b-button v-b-toggle.intolerances-collapse variant="link" class="dropdown-toggle">Select Intolerances</b-button>
+        <b-collapse id="intolerances-collapse">
+          <b-form-checkbox-group v-model="selectedIntolerances" class="checkbox-group">
+            <b-form-checkbox v-for="intolerance in intolerances" :key="intolerance.value" :value="intolerance.value" class="checkbox-item">
+              {{ intolerance.label }}
+            </b-form-checkbox>
+          </b-form-checkbox-group>
+        </b-collapse>
       </b-form-group>
         
-        
-        <b-button
+      <b-button
         type="submit"
         variant="primary"
         style="width:100px;display:block;"
         class="mx-auto w-100"
-        >Search</b-button
-      >
-      </b-form>
+      >Search</b-button>
+    </b-form>
 
     <!-- Display search results -->
     <div v-if="searchPerformed">
@@ -80,10 +113,15 @@
 </template>
 
 
+
+
+
+
 <script>
 import { required } from "vuelidate/lib/validators";
 import { mockGetRecipesPreviewFromSearch } from "../services/recipes.js";
 import SearchRecipePreview from "../components/SearchRecipePreview.vue";
+import { cuisines, diets, intolerances } from '../assets/filters.js';
 export default {
   name: "search",
   components: {
@@ -97,14 +135,21 @@ export default {
       },
       recipesPerPage: 5,
       selectedFilter: "",
-      filters: [ // Define your filters here
-        { label: "Filter 1", value: "filter1" },
-        { label: "Filter 2", value: "filter2" },
-        { label: "Filter 3", value: "filter3" }
-      ],
+      selectedCuisines: [], // New data property for selected cuisines
+      selectedDiets: [], // New data property for selected diets
+      selectedIntolerances: [], // New data property for selected intolerances
+      cuisines: [], // Data property for cuisines filter
+      diets: [], // Data property for diets filter
+      intolerances: [], // Data property for intolerances filter
       recipes: [], // Array to hold search results
       searchPerformed: false // Flag to indicate if search has been performed
     };
+  },
+  created() {
+    // Populate the filters from the imported file
+    this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
+    this.diets = diets.map(d => ({ label: d.text, value: d.value }));
+    this.intolerances = intolerances.map(i => ({ label: i.text, value: i.value }));
   },
   validations: {
     form: {
@@ -166,3 +211,44 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Ensure items align to the left */
+}
+
+.checkbox-item {
+  margin-bottom: 0.5rem;
+  flex: 1 1 20%;
+  max-width: 20%; /* Ensure items don't spread out */
+  box-sizing: border-box;
+}
+
+.dropdown-toggle {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding-right: 1.5rem; /* Add space for the arrow */
+}
+
+
+.dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  border: solid transparent;
+  border-width: 0 4px 4px 4px;
+  border-bottom-color: #000; /* Adjust the color of the arrow */
+  pointer-events: none;
+}
+
+.dropdown-toggle:hover {
+  color: #007bff; /* Change the color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+</style>
+
