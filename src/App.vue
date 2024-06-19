@@ -260,6 +260,7 @@ export default {
   padding-left: 60px; /* Adjust the padding to create space for the logo */
 }
 
+
 .b-navbar-nav {
   margin-left: auto; /* Align navbar items to the right */
 }
