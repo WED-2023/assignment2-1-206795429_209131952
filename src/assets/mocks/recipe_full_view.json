@@ -11,370 +11,134 @@
         "summary": "You can never have too many main course recipes, so give Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs a try. One serving contains <b>543 calories</b>, <b>17g of protein</b>, and <b>16g of fat</b>. For <b>$1.57 per serving</b>, this recipe <b>covers 22%</b> of your daily requirements of vitamins and minerals. This recipe serves 2. A mixture of butter, white wine, pasta, and a handful of other ingredients are all it takes to make this recipe so yummy. 209 people have tried and liked this recipe. It is brought to you by fullbellysisters.blogspot.com. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 83%</b>, which is tremendous. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/pasta-with-garlic-scallions-cauliflower-breadcrumbs-1230187\">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</a>, <a href=\"https://spoonacular.com/recipes/pasta-with-garlic-scallions-cauliflower-breadcrumbs-1229807\">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</a>, and <a href=\"https://spoonacular.com/recipes/pasta-with-garlic-scallions-cauliflower-breadcrumbs-1229669\">Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs</a>.",
         "analyzedInstructions": [
             {
-                "name": "",
-                "steps": [
+              "name": " ",
+              "steps": [
+                {
+                  "number": 1,
+                  "step": "Bring a large pot of salted water to a boil.",
+                  "ingredients": [
                     {
-                        "number": 1,
-                        "step": "Preheat the oven to 200 degrees F.",
-                        "ingredients": [],
-                        "equipment": [
-                            {
-                                "id": 404784,
-                                "name": "oven",
-                                "localizedName": "oven",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
-                                "temperature": {
-                                    "number": 200.0,
-                                    "unit": "Fahrenheit"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "number": 2,
-                        "step": "Whisk together the flour, pecans, granulated sugar, light brown sugar, baking powder, baking soda, and salt in a medium bowl.",
-                        "ingredients": [
-                            {
-                                "id": 19334,
-                                "name": "light brown sugar",
-                                "localizedName": "light brown sugar",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/light-brown-sugar.jpg"
-                            },
-                            {
-                                "id": 10719335,
-                                "name": "granulated sugar",
-                                "localizedName": "granulated sugar",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/sugar-in-bowl.png"
-                            },
-                            {
-                                "id": 18369,
-                                "name": "baking powder",
-                                "localizedName": "baking powder",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/white-powder.jpg"
-                            },
-                            {
-                                "id": 18372,
-                                "name": "baking soda",
-                                "localizedName": "baking soda",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/white-powder.jpg"
-                            },
-                            {
-                                "id": 12142,
-                                "name": "pecans",
-                                "localizedName": "pecans",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/pecans.jpg"
-                            },
-                            {
-                                "id": 20081,
-                                "name": "all purpose flour",
-                                "localizedName": "all purpose flour",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/flour.png"
-                            },
-                            {
-                                "id": 2047,
-                                "name": "salt",
-                                "localizedName": "salt",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404661,
-                                "name": "whisk",
-                                "localizedName": "whisk",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 3,
-                        "step": "Whisk together the eggs, buttermilk, butter and vanilla extract and vanilla bean in a small bowl.",
-                        "ingredients": [
-                            {
-                                "id": 2050,
-                                "name": "vanilla extract",
-                                "localizedName": "vanilla extract",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/vanilla-extract.jpg"
-                            },
-                            {
-                                "id": 93622,
-                                "name": "vanilla bean",
-                                "localizedName": "vanilla bean",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/vanilla.jpg"
-                            },
-                            {
-                                "id": 1230,
-                                "name": "buttermilk",
-                                "localizedName": "buttermilk",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/buttermilk.jpg"
-                            },
-                            {
-                                "id": 1001,
-                                "name": "butter",
-                                "localizedName": "butter",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg"
-                            },
-                            {
-                                "id": 1123,
-                                "name": "egg",
-                                "localizedName": "egg",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/egg.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404661,
-                                "name": "whisk",
-                                "localizedName": "whisk",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/whisk.png"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 4,
-                        "step": "Add the egg mixture to the dry mixture and gently mix to combine. Do not overmix.",
-                        "ingredients": [
-                            {
-                                "id": 1123,
-                                "name": "egg",
-                                "localizedName": "egg",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/egg.png"
-                            }
-                        ],
-                        "equipment": []
-                    },
-                    {
-                        "number": 5,
-                        "step": "Let the batter sit at room temperature for at least 15 minutes and up to 30 minutes before using.",
-                        "ingredients": [],
-                        "equipment": [],
-                        "length": {
-                            "number": 15,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 6,
-                        "step": "Heat a cast iron or nonstick griddle pan over medium heat and brush with melted butter. Once the butter begins to sizzle, use 2 tablespoons of the batter for each pancake and cook until the bubbles appear on the surface and the bottom is golden brown, about 2 minutes, flip over and cook until the bottom is golden brown, 1 to 2 minutes longer.",
-                        "ingredients": [
-                            {
-                                "id": 1001,
-                                "name": "butter",
-                                "localizedName": "butter",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404645,
-                                "name": "frying pan",
-                                "localizedName": "frying pan",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
-                            }
-                        ],
-                        "length": {
-                            "number": 3,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 7,
-                        "step": "Transfer the pancakes to a platter and keep warm in a 200 degree F oven.",
-                        "ingredients": [],
-                        "equipment": [
-                            {
-                                "id": 404784,
-                                "name": "oven",
-                                "localizedName": "oven",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/oven.jpg",
-                                "temperature": {
-                                    "number": 200.0,
-                                    "unit": "Fahrenheit"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "number": 8,
-                        "step": "Serve 6 pancakes per person, top each with some of the bourbon butter.",
-                        "ingredients": [
-                            {
-                                "id": 10014037,
-                                "name": "bourbon",
-                                "localizedName": "bourbon",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/bourbon.png"
-                            },
-                            {
-                                "id": 1001,
-                                "name": "butter",
-                                "localizedName": "butter",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg"
-                            }
-                        ],
-                        "equipment": []
-                    },
-                    {
-                        "number": 9,
-                        "step": "Drizzle with warm maple syrup and dust with confectioners' sugar.",
-                        "ingredients": [
-                            {
-                                "id": 19336,
-                                "name": "powdered sugar",
-                                "localizedName": "powdered sugar",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/powdered-sugar.jpg"
-                            },
-                            {
-                                "id": 19911,
-                                "name": "maple syrup",
-                                "localizedName": "maple syrup",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/maple-syrup.png"
-                            }
-                        ],
-                        "equipment": []
-                    },
-                    {
-                        "number": 10,
-                        "step": "Garnish with fresh mint sprigs and more toasted pecans, if desired.",
-                        "ingredients": [
-                            {
-                                "id": 2064,
-                                "name": "fresh mint",
-                                "localizedName": "fresh mint",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/mint.jpg"
-                            },
-                            {
-                                "id": 12142,
-                                "name": "pecans",
-                                "localizedName": "pecans",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/pecans.jpg"
-                            }
-                        ],
-                        "equipment": []
+                      "id": 2047,
+                      "name": "salt",
+                      "localizedName": "salt",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
                     }
-                ]
-            },
-            {
-                "name": "Bourbon Molasses Butter",
-                "steps": [
+                  ],
+                  "equipment": [
                     {
-                        "number": 1,
-                        "step": "Combine the bourbon and sugar in a small saucepan and cook over high heat until reduced to 3 tablespoons, remove and let cool.",
-                        "ingredients": [
-                            {
-                                "id": 10014037,
-                                "name": "bourbon",
-                                "localizedName": "bourbon",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/bourbon.png"
-                            },
-                            {
-                                "id": 19335,
-                                "name": "sugar",
-                                "localizedName": "sugar",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/sugar-in-bowl.png"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404669,
-                                "name": "sauce pan",
-                                "localizedName": "sauce pan",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/sauce-pan.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 2,
-                        "step": "Put the butter, molasses, salt and cooled bourbon mixture in a food processor and process until smooth.",
-                        "ingredients": [
-                            {
-                                "id": 19304,
-                                "name": "molasses",
-                                "localizedName": "molasses",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/molasses.jpg"
-                            },
-                            {
-                                "id": 10014037,
-                                "name": "bourbon",
-                                "localizedName": "bourbon",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/bourbon.png"
-                            },
-                            {
-                                "id": 1001,
-                                "name": "butter",
-                                "localizedName": "butter",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg"
-                            },
-                            {
-                                "id": 2047,
-                                "name": "salt",
-                                "localizedName": "salt",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404771,
-                                "name": "food processor",
-                                "localizedName": "food processor",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/food-processor.png"
-                            }
-                        ]
-                    },
-                    {
-                        "number": 3,
-                        "step": "Scrape into a bowl, cover with plastic wrap and refrigerate for at least 1 hour to allow the flavors to meld.",
-                        "ingredients": [
-                            {
-                                "id": 10018364,
-                                "name": "wrap",
-                                "localizedName": "wrap",
-                                "image": "https://spoonacular.com/cdn/ingredients_100x100/flour-tortilla.jpg"
-                            }
-                        ],
-                        "equipment": [
-                            {
-                                "id": 404730,
-                                "name": "plastic wrap",
-                                "localizedName": "plastic wrap",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/plastic-wrap.jpg"
-                            },
-                            {
-                                "id": 404783,
-                                "name": "bowl",
-                                "localizedName": "bowl",
-                                "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
-                            }
-                        ],
-                        "length": {
-                            "number": 60,
-                            "unit": "minutes"
-                        }
-                    },
-                    {
-                        "number": 4,
-                        "step": "Remove from the refrigerator about 30 minutes before using to soften.",
-                        "ingredients": [],
-                        "equipment": [],
-                        "length": {
-                            "number": 30,
-                            "unit": "minutes"
-                        }
+                      "id": 404740,
+                      "name": "pot",
+                      "localizedName": "pot",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pot.jpg"
                     }
-                ]
+                  ]
+                },
+                {
+                  "number": 2,
+                  "step": "Cook the pasta according to package instructions until al dente. Reserve 1 cup of pasta water, then drain and set aside.",
+                  "ingredients": [],
+                  "equipment": [
+                    {
+                      "id": 404740,
+                      "name": "pot",
+                      "localizedName": "pot",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pot.jpg"
+                    }
+                  ]
+                },
+                {
+                  "number": 3,
+                  "step": "While the pasta cooks, heat olive oil in a large skillet over medium heat. Add minced garlic and cook until fragrant, about 1 minute.",
+                  "ingredients": [
+                    {
+                      "id": 11215,
+                      "name": "garlic",
+                      "localizedName": "garlic",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.jpg"
+                    },
+                    {
+                      "id": 4047,
+                      "name": "olive oil",
+                      "localizedName": "olive oil",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/olive-oil.jpg"
+                    }
+                  ],
+                  "equipment": [
+                    {
+                      "id": 404645,
+                      "name": "frying pan",
+                      "localizedName": "frying pan",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                    }
+                  ]
+                },
+                {
+                  "number": 4,
+                  "step": "Add chopped scallions and cauliflower florets to the skillet. Cook, stirring occasionally, until cauliflower is tender and lightly browned, about 5-7 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 11291,
+                      "name": "scallions",
+                      "localizedName": "scallions",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/spring-onions.jpg"
+                    },
+                    {
+                      "id": 11135,
+                      "name": "cauliflower",
+                      "localizedName": "cauliflower",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/cauliflower.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 5,
+                  "step": "Add the cooked pasta to the skillet with the cauliflower mixture. Toss to combine, adding reserved pasta water as needed to loosen the sauce.",
+                  "ingredients": [],
+                  "equipment": []
+                },
+                {
+                  "number": 6,
+                  "step": "In a separate small skillet, heat olive oil over medium heat. Add breadcrumbs and toast until golden brown and crispy, about 3-4 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 18079,
+                      "name": "breadcrumbs",
+                      "localizedName": "breadcrumbs",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/breadcrumbs.jpg"
+                    },
+                    {
+                      "id": 4047,
+                      "name": "olive oil",
+                      "localizedName": "olive oil",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/olive-oil.jpg"
+                    }
+                  ],
+                  "equipment": [
+                    {
+                      "id": 404645,
+                      "name": "frying pan",
+                      "localizedName": "frying pan",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                    }
+                  ]
+                },
+                {
+                  "number": 7,
+                  "step": "Serve the pasta topped with toasted breadcrumbs and garnish with freshly chopped parsley, if desired.",
+                  "ingredients": [
+                    {
+                      "id": 10311529,
+                      "name": "parsley",
+                      "localizedName": "parsley",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/parsley.jpg"
+                    }
+                  ],
+                  "equipment": []
+                }
+              ]
             }
-        ],
+          ],
         "instructions":"",
         "extendedIngredients": [
             {
@@ -686,7 +450,164 @@
         "vegan": true,
         "glutenFree": true,
         "summary": "This Spicy Chickpea Stew is a hearty, delicious, and nutritious dish that is perfect for any meal. With a combination of chickpeas, tomatoes, and spices, it's packed with flavor and nutrients. One serving contains 543 calories, 17g of protein, and 16g of fat. For $1.57 per serving, this recipe covers 22% of your daily requirements of vitamins and minerals. This recipe serves 2. 209 people have tried and liked this recipe. From preparation to the plate, this recipe takes approximately 45 minutes. Taking all factors into account, this recipe earns a spoonacular score of 83%, which is tremendous.",
-        "analyzedInstructions": ["mix", "boil"],
+        "analyzedInstructions": [
+            {
+              "name": "",
+              "steps": [
+                {
+                  "number": 1,
+                  "step": "Heat olive oil in a large pot over medium heat. Add diced onion and minced garlic, sauté until onions are translucent, about 5 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 11282,
+                      "name": "onion",
+                      "localizedName": "onion",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/brown-onion.jpg"
+                    },
+                    {
+                      "id": 11215,
+                      "name": "garlic",
+                      "localizedName": "garlic",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.jpg"
+                    },
+                    {
+                      "id": 4047,
+                      "name": "olive oil",
+                      "localizedName": "olive oil",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/olive-oil.jpg"
+                    }
+                  ],
+                  "equipment": [
+                    {
+                      "id": 404740,
+                      "name": "pot",
+                      "localizedName": "pot",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pot.jpg"
+                    },
+                    {
+                      "id": 404706,
+                      "name": "knife",
+                      "localizedName": "knife",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/knife.jpg"
+                    }
+                  ]
+                },
+                {
+                  "number": 2,
+                  "step": "Add diced bell peppers, cumin, paprika, and chili flakes. Sauté for another 3-4 minutes until peppers begin to soften.",
+                  "ingredients": [
+                    {
+                      "id": 11333,
+                      "name": "bell pepper",
+                      "localizedName": "bell pepper",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/bell-pepper-orange.png"
+                    },
+                    {
+                      "id": 1002014,
+                      "name": "cumin",
+                      "localizedName": "cumin",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/ground-cumin.jpg"
+                    },
+                    {
+                      "id": 1002030,
+                      "name": "paprika",
+                      "localizedName": "paprika",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/paprika.jpg"
+                    },
+                    {
+                      "id": 10111962,
+                      "name": "red pepper flakes",
+                      "localizedName": "red pepper flakes",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/red-pepper-flakes.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 3,
+                  "step": "Add diced tomatoes, vegetable broth, and bay leaves. Bring to a boil, then reduce heat and let simmer for 15 minutes, stirring occasionally.",
+                  "ingredients": [
+                    {
+                      "id": 11529,
+                      "name": "tomato",
+                      "localizedName": "tomato",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/tomato.png"
+                    },
+                    {
+                      "id": 1006615,
+                      "name": "vegetable broth",
+                      "localizedName": "vegetable broth",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/broth.jpg"
+                    },
+                    {
+                      "id": 2004,
+                      "name": "bay leaf",
+                      "localizedName": "bay leaf",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/bay-leaves.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 4,
+                  "step": "Stir in chickpeas and spinach. Simmer for an additional 5-7 minutes until spinach is wilted and chickpeas are heated through.",
+                  "ingredients": [
+                    {
+                      "id": 16057,
+                      "name": "chickpeas",
+                      "localizedName": "chickpeas",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/chickpeas.png"
+                    },
+                    {
+                      "id": 10011457,
+                      "name": "spinach",
+                      "localizedName": "spinach",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/spinach.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 5,
+                  "step": "Season with salt and pepper to taste. Remove bay leaves before serving.",
+                  "ingredients": [
+                    {
+                      "id": 2047,
+                      "name": "salt",
+                      "localizedName": "salt",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/salt.jpg"
+                    },
+                    {
+                      "id": 1102047,
+                      "name": "black pepper",
+                      "localizedName": "black pepper",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/black-pepper.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 6,
+                  "step": "Serve hot, garnished with fresh cilantro leaves and a drizzle of olive oil, if desired.",
+                  "ingredients": [
+                    {
+                      "id": 11165,
+                      "name": "cilantro",
+                      "localizedName": "cilantro",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/cilantro.png"
+                    },
+                    {
+                      "id": 4047,
+                      "name": "olive oil",
+                      "localizedName": "olive oil",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/olive-oil.jpg"
+                    }
+                  ],
+                  "equipment": []
+                }
+              ]
+            }
+          ],
         "instructions": "",
         "extendedIngredients": [
             {
@@ -998,7 +919,135 @@
         "vegan": false,
         "glutenFree": false,
         "summary": "Creamy Mushroom Risotto is a delicious and rich main course that can be enjoyed by vegetarians. One serving contains <b>320 calories</b>, <b>8g of protein</b>, and <b>12g of fat</b>. For <b>$2.50 per serving</b>, this recipe <b>covers 18%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A mixture of arborio rice, mushrooms, vegetable broth, and a handful of other ingredients are all it takes to make this recipe so yummy. 150 people have tried and liked this recipe. It is brought to you by spoonacular.com. From preparation to the plate, this recipe takes approximately <b>60 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 85%</b>, which is excellent. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/creamy-mushroom-risotto-1230188\">Creamy Mushroom Risotto</a>, <a href=\"https://spoonacular.com/recipes/creamy-mushroom-risotto-1229808\">Creamy Mushroom Risotto</a>, and <a href=\"https://spoonacular.com/recipes/creamy-mushroom-risotto-1229668\">Creamy Mushroom Risotto</a>.",
-        "analyzedInstructions": ["saute", "simmer", "stir"],
+        "analyzedInstructions": [
+            {
+              "name": "",
+              "steps": [
+                {
+                  "number": 1,
+                  "step": "In a large saucepan, heat vegetable broth over medium heat until simmering. Reduce heat to low and keep warm.",
+                  "ingredients": [
+                    {
+                      "id": 1006615,
+                      "name": "vegetable broth",
+                      "localizedName": "vegetable broth",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/broth.jpg"
+                    }
+                  ],
+                  "equipment": [
+                    {
+                      "id": 404740,
+                      "name": "saucepan",
+                      "localizedName": "saucepan",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/pot.jpg"
+                    }
+                  ]
+                },
+                {
+                  "number": 2,
+                  "step": "In a separate large skillet or saucepan, melt butter over medium heat. Add diced onion and minced garlic, sauté until onions are translucent, about 5 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 11282,
+                      "name": "onion",
+                      "localizedName": "onion",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/brown-onion.jpg"
+                    },
+                    {
+                      "id": 11215,
+                      "name": "garlic",
+                      "localizedName": "garlic",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.jpg"
+                    },
+                    {
+                      "id": 1001,
+                      "name": "butter",
+                      "localizedName": "butter",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/butter-sliced.jpg"
+                    }
+                  ],
+                  "equipment": [
+                    {
+                      "id": 404706,
+                      "name": "skillet",
+                      "localizedName": "skillet",
+                      "image": "https://spoonacular.com/cdn/equipment_100x100/skillet.jpg"
+                    }
+                  ]
+                },
+                {
+                  "number": 3,
+                  "step": "Add sliced mushrooms and cook until they release their moisture and start to brown, about 8-10 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 11291,
+                      "name": "mushroom",
+                      "localizedName": "mushroom",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/mushrooms.png"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 4,
+                  "step": "Add Arborio rice to the skillet and stir to coat with butter and mushrooms, about 2 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 1002035,
+                      "name": "Arborio rice",
+                      "localizedName": "Arborio rice",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/Arborio-rice.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 5,
+                  "step": "Add white wine to the skillet and cook until evaporated, stirring frequently, about 2-3 minutes.",
+                  "ingredients": [
+                    {
+                      "id": 14106,
+                      "name": "white wine",
+                      "localizedName": "white wine",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/white-wine.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 6,
+                  "step": "Begin adding warm vegetable broth to the skillet, one ladleful at a time, stirring frequently and allowing each addition to be absorbed before adding more. Continue until rice is creamy and cooked al dente, about 20-25 minutes.",
+                  "ingredients": [],
+                  "equipment": []
+                },
+                {
+                  "number": 7,
+                  "step": "Stir in grated Parmesan cheese and chopped parsley until well combined. Season with salt and pepper to taste.",
+                  "ingredients": [
+                    {
+                      "id": 1033,
+                      "name": "Parmesan cheese",
+                      "localizedName": "Parmesan cheese",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/Parmesan-cheese.jpg"
+                    },
+                    {
+                      "id": 1032027,
+                      "name": "parsley",
+                      "localizedName": "parsley",
+                      "image": "https://spoonacular.com/cdn/ingredients_100x100/parsley.jpg"
+                    }
+                  ],
+                  "equipment": []
+                },
+                {
+                  "number": 8,
+                  "step": "Remove from heat and let rest for 2-3 minutes before serving. Garnish with additional parsley and grated Parmesan, if desired.",
+                  "ingredients": [],
+                  "equipment": []
+                }
+              ]
+            }
+          ],
         "instructions": "",
         "extendedIngredients": [
             {
