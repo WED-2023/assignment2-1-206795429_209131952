@@ -24,9 +24,6 @@
         <li v-if="this.recipe.glutenFree">
           <img src="../assets/gluten_free.png" class="tiny_logo" />
         </li>
-        <li v-if="this.recipe.glutenFree">
-          <img src="../assets/gluten_free.png" class="tiny_logo" />
-        </li>
         <li>
           <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
     <b-icon :icon="icon" class="no-background"></b-icon>
@@ -65,16 +62,10 @@ export default {
       // Call mockAddFavorite when star changes to full
       const result = mockAddFavorite(this.recipe.id);
        this.$root.toast("Add to favorites", "Recipe successfully added to your favorites :)", "success");
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
       }
       if (! this.isFull) {
       // Call mockAddFavorite when star changes to full
        this.$root.toast("Remove from favorites", "Recipe successfully removed from your favorites", "success");
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
       }
     },
   markRecipeAsViewed() {

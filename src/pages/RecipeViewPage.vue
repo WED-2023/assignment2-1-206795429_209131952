@@ -110,16 +110,16 @@ export default {
         title
       } = recipe;
 
-      // let _instructions = analyzedInstructions
-      //   .map((fstep) => {
-      //     fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-      //     return fstep.steps;
-      //   })
-      //   .reduce((a, b) => [...a, ...b], []);
-      let _instructions = analyzedInstructions.map((step, index) => ({
-  number: index + 1,
-  step: step
-}));
+      let _instructions = analyzedInstructions
+        .map((fstep) => {
+          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
+          return fstep.steps;
+        })
+        .reduce((a, b) => [...a, ...b], []);
+//       let _instructions = analyzedInstructions.map((step, index) => ({
+//   number: index + 1,
+//   step: step
+// }));
 
       let _recipe = {
         instructions,

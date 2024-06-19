@@ -11,7 +11,6 @@
               <div class="mb-3">
                 <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
                 <div>Likes: {{ recipe.aggregateLikes }} likes</div>
-                <div>Servings: {{ recipe.servings }}</div>
                 <div class="logo-container">
                 <div v-if="recipe.vegetarian">
                   <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
@@ -27,12 +26,8 @@
                 </button>
                 </div>
               </div>
-              <!-- Summary:
-              <ul>
-                <li>
-                  {{ r.summary }}
-                </li>
-              </ul> -->
+              Summary:
+              <p v-html="recipe.summary"></p>
             </div>
           </div>
           </div>
@@ -46,79 +41,32 @@
   </template>
   
   <script>
-  import { mockGetMyFamilyRecipesPreview } from "../services/recipes.js";
+  import { mockFamilyRecipeView } from "../services/recipes.js";
   export default {
     data() {
       return {
          isFull: false,
-        recipe: {}
+        recipe: null 
       };
     },
     async created() {
-      try {
-        let response;
-        // response = this.$route.params.response;
-  
-        try {
-          // response = await this.axios.get(
-          //   this.$root.store.server_domain + "/recipes/" + this.$route.params.recipeId,
-          //   {
-          //     withCredentials: true
-          //   }
-          // );
-  
-          response = mockGetMyFamilyRecipesPreview(this.$route.params.recipeId);
-  
-          // console.log("response.status", response.status);
-          //if (response.status !== 200) this.$router.replace("/NotFound");
-        } catch (error) {
-          console.log("error.response.status", error.response.status);
-          this.$router.replace("/NotFound");
-          return;
-        }
-  
-        const recipes = response.data.recipe; // Get the array of recipes
-        const recipe = recipes.find(r => r.id === parseInt(this.$route.params.recipeId));
-        
-        if (!recipe) {
+    try {
+      const response = mockFamilyRecipeView(this.$route.params.recipeId);
+      const recipe = response.data.recipe;
+      
+      if (!recipe) {
+        // Handle scenario where recipe is not found
         this.$router.replace("/NotFound");
         return;
       }
-  
-        let {
-          summary,
-          glutenFree,
-          vegan,
-          vegetarian,
-          aggregateLikes,
-          readyInMinutes,
-          image,
-          title
-        } = recipe;
-  
-        // let _instructions = analyzedInstructions
-        //   .map((fstep) => {
-        //     fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-        //     return fstep.steps;
-        //   })
-        //   .reduce((a, b) => [...a, ...b], []);
-
-  
-        let _recipe = {
-          aggregateLikes,
-          readyInMinutes,
-          image,
-          vegetarian,
-          vegan,
-          glutenFree,
-          title
-        };
-  
-        this.recipe = _recipe;
-      } catch (error) {
-        console.log(error);
-      }
-    },
+      
+      // Set the recipe to component data
+      this.recipe = recipe;
+    } catch (error) {
+      console.error(error);
+      this.$router.replace("/NotFound");
+    }
+  },
       computed: {
       icon() {
         return this.isFull ? 'star-fill' : 'star';

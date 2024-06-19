@@ -6,6 +6,7 @@ import my_family_preview from "../assets/mocks/my_family_recipe_preview.json";
 
 
 
+
 export function mockGetRecipesPreview(amount = 1) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
@@ -40,9 +41,14 @@ export function mockGetMyRecipesPreview(amount = 1) {
 export function mockGetMyFamilyRecipesPreview(amount = 1) {
   let recipes = [];
   for(let i = 0; i < amount; i++){
-    recipes.push(my_family_preview[i % recipe_preview.length]);
+    recipes.push(my_family_preview[i % my_family_preview.length]);
   }
 
   return { data: { recipes: recipes } };
 }
-  
+
+export function mockFamilyRecipeView(recipeId) {
+  const recipes = my_family_preview;
+  const recipe = recipes.find(r => r.id === parseInt(recipeId));
+  return { data: { recipe: recipe || null } };
+}
