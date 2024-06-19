@@ -4,11 +4,10 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-row>
-      <b-col v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-    </b-row>
+    <div v-if="recipes.length === 0">No recipes available.</div>
+    <div v-else>
+      <RecipePreview v-for="r in recipes" :key="r.id" :recipe="r" />
+    </div>
   </b-container>
 </template>
 
@@ -24,13 +23,18 @@ export default {
     title: {
       type: String,
       required: true
-    }
+    },
+    recipes: {
+      type: Array,
+      default: () => [],
+    },
+    
   },
-  data() {
-    return {
-      recipes: []
-    };
-  },
+  // data() {
+  //   return {
+  //     recipes_data: []
+  //   };
+  // },
   mounted() {
     this.updateRecipes();
   },

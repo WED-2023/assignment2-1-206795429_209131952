@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">Search Page</h1>
-    <b-form @submit.prevent="Search">
+    <b-form @submit.prevent="onSearch">
       <b-form-group
         id="input-group-search"
         label-cols-sm="3"
@@ -14,9 +14,9 @@
           type="text"
           :state="validateState('search')"
         ></b-form-input>
-        <b-form-invalid-feedback>
-          Search is required
-        </b-form-invalid-feedback>
+          <b-form-invalid-feedback v-if="!$v.form.search.required">
+            Search is required
+          </b-form-invalid-feedback>
       </b-form-group>
 
       <!-- Select number of recipes to display -->
@@ -86,6 +86,7 @@
           </b-form-checkbox-group>
         </b-collapse>
       </b-form-group>
+      
         
       <b-button
         type="submit"
@@ -95,15 +96,23 @@
       >Search</b-button>
     </b-form>
 
-    <!-- Display search results -->
+    <!-- Display sort dropdown only when there are search results -->
     <div v-if="searchPerformed">
+      <b-dropdown variant="primary" class="sort-dropdown">
+        <template #button-content>
+          Sort <i class="fas fa-sort"></i>
+        </template>
+        <b-dropdown-item @click="sortRecipes('liked')">Likes (High to Low)</b-dropdown-item>
+        <b-dropdown-item @click="sortRecipes('time')">Preparation Time (Low to High)</b-dropdown-item>
+      </b-dropdown>
       <div v-if="recipes.length > 0">
         <h2>Search Results</h2>
-        <div v-for="recipe in recipes" :key="recipe.id">
+        <div v-for="recipe in sortedRecipes" :key="recipe.id">
           <!-- Display recipe details -->
           <SearchRecipePreview class="recipePreview" :recipe="recipe" />
         </div>
       </div>
+      
       <div v-else>
         <br>
         <p>No results found.</p>
@@ -207,12 +216,36 @@ export default {
 
       this.Search();
 
-    }
+    },
+      sortRecipes(option) {
+        this.sortOption = option;
+        if (option === "liked") {
+          this.recipes.sort((a, b) => b.likes - a.likes); // Sort by likes (high to low)
+        } else if (option === "time") {
+          this.recipes.sort((a, b) => a.prepTime - b.prepTime); // Sort by prepTime (low to high)
+        }
+      }
+    },
+    computed: {
+      sortedRecipes() {
+        if (this.sortOption === "liked") {
+          return this.recipes.slice().sort((a, b) => b.likes - a.likes);
+        } else if (this.sortOption === "time") {
+          return this.recipes.slice().sort((a, b) => a.prepTime - b.prepTime);
+        }
+        return this.recipes;
+      }
   }
 };
 </script>
 
 <style scoped>
+.sort-dropdown {
+  margin-top: 10px;
+  align-self: flex-end; /* Ensure it aligns to the right */
+  justify-self: end; /* Align content within the container */
+}
+
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;

@@ -8,7 +8,11 @@
         <div class="button-container">
           <button @click="fetchRandomRecipe">Random Recipe</button>
         </div>
-        <RecipePreviewList title="Explore this Recipes" class="RandomRecipes center" />
+        <RecipePreviewList
+          title="Explore this Recipes"
+          :recipes="randomRecipes"
+          class="RandomRecipes center"
+        />
       </div>
       <div class = "right-column">
 
@@ -37,16 +41,25 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
+import recipes from "../assets/mocks/recipe_preview.json";
 export default {
   components: {
     RecipePreviewList
   },
+   data() {
+    return {
+      allRecipes: recipes,
+      randomRecipes: []
+    };
+  },
+  mounted() {
+    this.fetchRandomRecipe();
+  },
   methods: {
     fetchRandomRecipe() {
-      // Fetch random recipe logic goes here
-      // You can make an API call to get a random recipe
-      // Update the RecipePreviewList component with the fetched recipe
-    }
+    const shuffled = this.allRecipes.sort(() => 0.5 - Math.random());
+    this.randomRecipes = shuffled.slice(0, 3);
+  }
   }
 };
 </script>

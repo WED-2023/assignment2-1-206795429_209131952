@@ -35,9 +35,9 @@ const routes = [
   },
 
   {
-    path: "/RecipeMinimalViewPage",
+    path: "   ",
     name: "recipe_minimal",
-    component: () => import("./pages/RecipeMinimalViewPage.vue"),
+    component: () => import("./pages/RecipeMinimalViewPage"),
   },
   {
     path: "*",

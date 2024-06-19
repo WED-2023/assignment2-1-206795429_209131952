@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mockAddFavorite } from '@/services/user';
 import { computed } from 'vue';
 export default {
   data() {
@@ -57,6 +58,21 @@ export default {
   methods: {
     toggleIcon() {
       this.isFull = !this.isFull;
+      if (this.isFull) {
+      // Call mockAddFavorite when star changes to full
+      const result = mockAddFavorite(this.recipe.id);
+       this.$root.toast("Add to favorites", "Recipe successfully added to your favorites :)", "success");
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
+      }
+      if (! this.isFull) {
+      // Call mockAddFavorite when star changes to full
+       this.$root.toast("Remove from favorites", "Recipe successfully removed from your favorites", "success");
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
+      }
     },
   markRecipeAsViewed() {
       this.isViewed = true;

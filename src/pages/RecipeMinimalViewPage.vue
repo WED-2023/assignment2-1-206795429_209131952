@@ -27,12 +27,12 @@
                 </button>
                 </div>
               </div>
-              Summary:
+              <!-- Summary:
               <ul>
                 <li>
                   {{ r.summary }}
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </div>
           </div>
