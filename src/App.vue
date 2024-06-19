@@ -80,6 +80,8 @@
 </template>
 
 <script>
+import { mockAddUserRecipe } from '@/services/user.js'; 
+
 export default {
   name: "App",
   data() {
@@ -158,15 +160,24 @@ export default {
       if (!this.checkFormValidity()) {
         return;
       }
+      this.RecipeSeccssfullyAdded()
       // Push the recipe to submitted recipes
       this.submittedRecipes.push({ ...this.recipe });
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing');
       });
+    },
+      RecipeSeccssfullyAdded() {
+      const result = mockAddUserRecipe(this.recipe);
+      this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
     }
-  }
-};
+    }
+  };
+
 </script>
 
 <style lang="scss">
