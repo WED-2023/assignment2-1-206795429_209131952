@@ -177,20 +177,20 @@ export default {
       async Search() {
       try {
         
-        // const response = await this.axios.post(
-        //   this.$root.store.server_domain +"/Login",
+        const response = await this.axios.post(
+          this.$root.store.server_domain +"/Login",
 
 
-        //   {
-        //     username: this.form.username,
-        //     password: this.form.password
-        //   }
-        // );
+          {
+            username: this.form.username,
+            password: this.form.password
+          }
+        );
 
         const success = true; // modify this to test the error handling
         // const response = mockSearch(this.form.search, success);
 
-        const response = mockGetRecipesPreviewFromSearch(5);
+        // const response = mockGetRecipesPreviewFromSearch(5);
         this.searchPerformed = true; // Set searchPerformed to true after search
 
         // console.log(response);

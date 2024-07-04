@@ -257,22 +257,22 @@ export default {
     async Register() {
       try {
 
-        // const response = await this.axios.post(
-        //   // "https://test-for-3-2.herokuapp.com/user/Register",
-        //   this.$root.store.server_domain + "/Register",
+        const response = await this.axios.post(
+          // "https://test-for-3-2.herokuapp.com/user/Register",
+          this.$root.store.server_domain + "/Register",
 
-        //   {
-        //     username: this.form.username,
-        //     password: this.form.password
-        //   }
-        // );
+          {
+            username: this.form.username,
+            password: this.form.password
+          }
+        );
 
         const userDetails = {
           username: this.form.username,
           password: this.form.password
         };
 
-        const response = mockRegister(userDetails);
+        // const response = mockRegister(userDetails);
 
         this.$router.push("/login");
         // console.log(response);
