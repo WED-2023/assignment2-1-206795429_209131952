@@ -28,6 +28,8 @@
               </div>
               Summary:
               <p v-html="recipe.summary"></p>
+              instructions:
+              <p v-html="recipe.instructions"></p>
             </div>
           </div>
           </div>
