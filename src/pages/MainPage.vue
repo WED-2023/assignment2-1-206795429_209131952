@@ -77,8 +77,11 @@ export default {
   cursor: default;
 }
 .columns {
+  //display: flex;
+  //width: 100%;
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .left-column,
@@ -89,6 +92,11 @@ export default {
 
 .left-column {
   border-right: 1px solid #ccc;
+  //added
+  background-color: #f9f9f9;
+}
+.right-column {
+  background-color: #f1f1f1;
 }
 
 .RandomRecipes {
