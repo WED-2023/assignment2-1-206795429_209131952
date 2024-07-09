@@ -70,8 +70,21 @@
           <b-form-checkbox id="gluten-input" v-model="recipe.glutenFree"></b-form-checkbox>
         </b-form-group>
         
-        <b-form-group label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
-          <b-form-textarea id="summary-input" v-model="recipe.summary" :state="summaryState" required></b-form-textarea>
+       
+        <b-form-group label="Ingredients" label-for="ingredients-input">
+          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2">
+            <b-form-input v-model="recipe.ingredients[index]" required></b-form-input>
+            <b-button @click="removeIngredient(index)" variant="danger" class="ml-2">Remove</b-button>
+          </div>
+          <b-button @click="addIngredient" variant="success">Add Ingredient</b-button>
+        </b-form-group>
+        
+        <b-form-group label="Instructions" label-for="instructions-input">
+          <div v-for="(instruction, index) in recipe.instructions" :key="index" class="d-flex mb-2">
+            <b-form-textarea v-model="recipe.instructions[index]" required></b-form-textarea>
+            <b-button @click="removeInstruction(index)" variant="danger" class="ml-2">Remove</b-button>
+          </div>
+          <b-button @click="addInstruction" variant="success">Add Instruction</b-button>
         </b-form-group>
       </form>
     </b-modal>
@@ -95,7 +108,8 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
-        summary: ''
+        ingredients: [''],
+        instructions: ['']
       },
       idState: null,
       imageState: null,
@@ -124,7 +138,6 @@ export default {
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
       this.likesState = this.recipe.aggregateLikes ? true : false;
-      this.summaryState = this.recipe.summary ? true : false;
       return valid;
     },
     resetModal() {
@@ -137,7 +150,8 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
-        summary: ''
+        ingredients: [''],
+        instructions: ['']
       };
       this.idState = null;
       this.imageState = null;
@@ -147,7 +161,6 @@ export default {
       this.vegetarianState = null;
       this.veganState = null;
       this.glutenState = null;
-      this.summaryState = null;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
@@ -174,8 +187,20 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+    },
+    addIngredient() {
+      this.recipe.ingredients.push('');
+    },
+    removeIngredient(index) {
+      this.recipe.ingredients.splice(index, 1);
+    },
+    addInstruction() {
+      this.recipe.instructions.push('');
+    },
+    removeInstruction(index) {
+      this.recipe.instructions.splice(index, 1);
     }
-    }
+  }
   };
 
 </script>
