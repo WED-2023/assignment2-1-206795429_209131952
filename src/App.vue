@@ -69,6 +69,10 @@
         <b-form-group label="Gluten Free" label-for="gluten-input" :state="glutenState">
           <b-form-checkbox id="gluten-input" v-model="recipe.glutenFree"></b-form-checkbox>
         </b-form-group>
+
+        <b-form-group label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
+          <b-form-textarea id="summary-input" v-model="recipe.summary" :state="summaryState" required></b-form-textarea>
+        </b-form-group>
         
        
         <b-form-group label="Ingredients" label-for="ingredients-input">
@@ -108,6 +112,7 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
+        summary: '',
         ingredients: [''],
         instructions: ['']
       },
@@ -138,6 +143,7 @@ export default {
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
       this.likesState = this.recipe.aggregateLikes ? true : false;
+      this.summaryState = this.recipe.summary ? true : false;
       return valid;
     },
     resetModal() {
@@ -150,6 +156,7 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
+        summary: '',
         ingredients: [''],
         instructions: ['']
       };
@@ -161,6 +168,7 @@ export default {
       this.vegetarianState = null;
       this.veganState = null;
       this.glutenState = null;
+      this.summaryState = null;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
