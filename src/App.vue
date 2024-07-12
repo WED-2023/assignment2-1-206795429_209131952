@@ -69,11 +69,10 @@
         <b-form-group label="Gluten Free" label-for="gluten-input" :state="glutenState">
           <b-form-checkbox id="gluten-input" v-model="recipe.glutenFree"></b-form-checkbox>
         </b-form-group>
-<<<<<<< Updated upstream
 
-        <b-form-group label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
+        <b-form-group> label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
           <b-form-textarea id="summary-input" v-model="recipe.summary" :state="summaryState" required></b-form-textarea>
-=======
+        </b-form-group>
        
         <b-form-group label="Ingredients" label-for="ingredients-input">
           <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2">
@@ -89,7 +88,6 @@
             <b-button @click="removeInstruction(index)" variant="danger" class="ml-2">Remove</b-button>
           </div>
           <b-button @click="addInstruction" variant="success">Add Instruction</b-button>
->>>>>>> Stashed changes
         </b-form-group>
         
        
@@ -130,10 +128,7 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
-<<<<<<< Updated upstream
         summary: '',
-=======
->>>>>>> Stashed changes
         ingredients: [''],
         instructions: ['']
       },
@@ -175,10 +170,7 @@ export default {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
-<<<<<<< Updated upstream
         summary: '',
-=======
->>>>>>> Stashed changes
         ingredients: [''],
         instructions: ['']
       };
@@ -230,12 +222,7 @@ export default {
       this.recipe.instructions.splice(index, 1);
     }
   }
-<<<<<<< Updated upstream
   };
-
-=======
-};
->>>>>>> Stashed changes
 </script>
 
 <style lang="scss">
