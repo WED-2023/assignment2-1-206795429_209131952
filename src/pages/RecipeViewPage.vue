@@ -71,17 +71,17 @@ export default {
       response = this.$route.params.response;
 
       try {
-        // response = await this.axios.get(
-        //   this.$root.store.server_domain + "/recipes/" + this.$route.params.recipeId,
-        //   {
-        //     withCredentials: true
-        //   }
-        // );
+        response = await this.axios.get(
+          this.$root.store.server_domain + "/recipes/recipe/:" + this.$route.params.recipeId,
+          {
+            withCredentials: true
+          }
+        );
 
-        response = mockGetRecipeFullDetails(this.$route.params.recipeId);
+        // response = mockGetRecipeFullDetails(this.$route.params.recipeId);
 
-        // console.log("response.status", response.status);
-        //if (response.status !== 200) this.$router.replace("/NotFound");
+        console.log("response.status", response.status);
+        if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");

@@ -40,26 +40,35 @@
 </template>
 
 <script>
+import axios from 'axios';
 import RecipePreviewList from "../components/RecipePreviewList";
-import recipes from "../assets/mocks/recipe_preview.json";
+// import recipes from "../assets/mocks/recipe_preview.json";
 export default {
   components: {
     RecipePreviewList
   },
    data() {
     return {
-      allRecipes: recipes,
+      // allRecipes: recipes,
       randomRecipes: []
     };
   },
+  methods: {
+  //   fetchRandomRecipe() {
+  //   const shuffled = this.allRecipes.sort(() => 0.5 - Math.random());
+  //   this.randomRecipes = shuffled.slice(0, 3);
+  // }
+  async fetchRandomRecipe() {
+      try {
+        const response = await axios.get('/api/recipes/random');
+        this.randomRecipes = response.data.recipes; // Assuming server sends an array of recipes
+      } catch (error) {
+        console.error('Error fetching random recipes:', error);
+      }
+    }
+  },
   mounted() {
     this.fetchRandomRecipe();
-  },
-  methods: {
-    fetchRandomRecipe() {
-    const shuffled = this.allRecipes.sort(() => 0.5 - Math.random());
-    this.randomRecipes = shuffled.slice(0, 3);
-  }
   }
 };
 </script>

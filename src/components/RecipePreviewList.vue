@@ -13,7 +13,8 @@
 
 <script>
 import RecipePreview from "./RecipePreview.vue";
-import { mockGetRecipesPreview } from "../services/recipes.js";
+import axios from 'axios';
+// import { mockGetRecipesPreview } from "../services/recipes.js";
 export default {
   name: "RecipePreviewList",
   components: {
@@ -40,6 +41,7 @@ export default {
   },
   methods: {
     async updateRecipes() {
+<<<<<<< Updated upstream
       try {
         // const response = await this.axios.get(
         //   this.$root.store.server_domain + "/recipes/random",
@@ -57,7 +59,16 @@ export default {
       } catch (error) {
         console.log(error);
       }
+=======
+    try {
+      const response = await axios.get(this.$root.store.server_domain+'/recipes/random');
+      const recipes = response.data;
+      this.recipes = recipes;
+    } catch (error) {
+      console.error('Error fetching random recipes:', error);
+>>>>>>> Stashed changes
     }
+  }
   }
 };
 </script>
