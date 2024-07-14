@@ -37,12 +37,12 @@
     methods: {
       async updateRecipes() {
         try {
-          // const response = await this.axios.get(
-          //   this.$root.store.server_domain + "/recipes/random",
-          // );
+          const response = await this.axios.get(
+            this.$root.store.server_domain + "/user/my_recipes",
+          );
   
-          const amountToFetch = 3; // Set this to how many recipes you want to fetch
-          const response = mockGetMyRecipesPreview(amountToFetch);
+          // const amountToFetch = 3; // Set this to how many recipes you want to fetch
+          // const response = mockGetMyRecipesPreview(amountToFetch);
   
   
           console.log(response);

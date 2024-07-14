@@ -13,47 +13,39 @@
               <div>Likes: {{ recipe.aggregateLikes }} likes</div>
               <div>Servings: {{ recipe.servings }}</div>
               <div class="logo-container">
-              <div v-if="recipe.vegetarian">
-                <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
-              </div>
-              <div v-if="recipe.vegan">
-                <img src="../assets/vegan_logo.jpg" class="tiny_logo" />
-              </div>
-              <div v-if="recipe.glutenFree">
-                <img src="../assets/gluten_free.png" class="tiny_logo" />
-              </div>
-              <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
+                <div v-if="recipe.vegetarian">
+                  <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
+                </div>
+                <div v-if="recipe.vegan">
+                  <img src="../assets/vegan_logo.jpg" class="tiny_logo" />
+                </div>
+                <div v-if="recipe.glutenFree">
+                  <img src="../assets/gluten_free.png" class="tiny_logo" />
+                </div>
+                <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
                   <b-icon :icon="icon" class="no-background"></b-icon>
-              </button>
+                </button>
               </div>
             </div>
             Ingredients:
             <ul>
-              <li
-                v-for="(r, index) in recipe.extendedIngredients"
-                :key="index + '_' + r.id"
-              >
+              <li v-for="(r, index) in recipe.extendedIngredients" :key="index + '_' + r.id">
                 {{ r.original }}
               </li>
             </ul>
           </div>
-        </div>
           <div class="wrapped">
             Instructions:
             <ol>
-               <li v-for="(step, index) in recipe._instructions" :key="index">
-                  {{ step.step }}
-               </li>
+              <li v-for="(step, index) in recipe._instructions" :key="index">
+                {{ step.step }}
+              </li>
             </ol>
           </div>
         </div>
       </div>
-      <!-- <pre>
-      {{ $route.params }}
-      {{ recipe }}
-    </pre
-      > -->
     </div>
+  </div>
 </template>
 
 <script>
@@ -72,15 +64,12 @@ export default {
 
       try {
         response = await this.axios.get(
-          this.$root.store.server_domain + "/recipes/recipe/:" + this.$route.params.recipeId,
-          {
-            withCredentials: true
-          }
+        `${this.$root.store.server_domain}/recipes/recipe/${this.$route.params.recipeId}`,
+        { withCredentials: true }
         );
 
-        // response = mockGetRecipeFullDetails(this.$route.params.recipeId);
-
         console.log("response.status", response.status);
+        console.log("response.data", response.data);  // Add this line to log the response data
         if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
@@ -88,13 +77,13 @@ export default {
         return;
       }
 
-      const recipes = response.data.recipe; // Get the array of recipes
-      const recipe = recipes.find(r => r.id === parseInt(this.$route.params.recipeId));
-      
+      let recipe = response.data; // Adjusted to directly use response data
+      console.log("recipe", recipe);  // Add this line to log the recipe data
+
       if (!recipe) {
-      this.$router.replace("/NotFound");
-      return;
-    }
+        this.$router.replace("/NotFound");
+        return;
+      }
 
       let {
         analyzedInstructions,
@@ -116,10 +105,6 @@ export default {
           return fstep.steps;
         })
         .reduce((a, b) => [...a, ...b], []);
-//       let _instructions = analyzedInstructions.map((step, index) => ({
-//   number: index + 1,
-//   step: step
-// }));
 
       let _recipe = {
         instructions,
@@ -136,21 +121,22 @@ export default {
         title
       };
 
+      console.log("_recipe", _recipe);  // Add this line to log the transformed recipe data
       this.recipe = _recipe;
     } catch (error) {
       console.log(error);
     }
   },
-    computed: {
+  computed: {
     icon() {
       return this.isFull ? 'star-fill' : 'star';
     }
   },
-    methods: {
+  methods: {
     toggleIcon() {
       this.isFull = !this.isFull;
     },
-    }
+  }
 };
 </script>
 
@@ -168,9 +154,6 @@ export default {
   width: 500px;
   height: 300px
 }
-/* .recipe-header{
-
-} */
 .tiny_logo {
   width:35px;
   height: 35px;
@@ -192,5 +175,4 @@ export default {
   width: 200px; /* Adjust the width as needed */
   height: 200px; /* Adjust the height as needed */
 }
-
 </style>

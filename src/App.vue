@@ -38,9 +38,9 @@
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group label="ID" label-for="id-input" invalid-feedback="ID is required" :state="idState">
+        <!-- <b-form-group label="ID" label-for="id-input" invalid-feedback="ID is required" :state="idState">
           <b-form-input id="id-input" v-model="recipe.id" :state="idState" required></b-form-input>
-        </b-form-group>
+        </b-form-group> -->
        
         <b-form-group label="Image URL" label-for="image-input" invalid-feedback="Image URL is required" :state="imageState">
           <b-form-input id="image-input" v-model="recipe.image" :state="imageState" required></b-form-input>
@@ -70,15 +70,20 @@
           <b-form-checkbox id="gluten-input" v-model="recipe.glutenFree"></b-form-checkbox>
         </b-form-group>
 
-        <b-form-group> label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
+        <b-form-group label="Summary" label-for="summary-input" invalid-feedback="Summary is required" :state="summaryState">
           <b-form-textarea id="summary-input" v-model="recipe.summary" :state="summaryState" required></b-form-textarea>
         </b-form-group>
        
         <b-form-group label="Ingredients" label-for="ingredients-input">
-          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2">
-            <b-form-input v-model="recipe.ingredients[index]" required></b-form-input>
+          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2 align-items-center">
+            <!-- Input for ingredient name -->
+            <b-form-input v-model="recipe.ingredients[index].name" placeholder="Ingredient name" required></b-form-input>
+            <!-- Input for ingredient amount -->
+            <b-form-input v-model="recipe.ingredients[index].amount" placeholder="Amount" required></b-form-input>
+            <!-- Button to remove ingredient -->
             <b-button @click="removeIngredient(index)" variant="danger" class="ml-2">Remove</b-button>
           </div>
+          <!-- Button to add new ingredient -->
           <b-button @click="addIngredient" variant="success">Add Ingredient</b-button>
         </b-form-group>
        
@@ -91,7 +96,7 @@
         </b-form-group>
         
        
-        <b-form-group label="Ingredients" label-for="ingredients-input">
+        <!-- <b-form-group label="Ingredients" label-for="ingredients-input">
           <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2">
             <b-form-input v-model="recipe.ingredients[index]" required></b-form-input>
             <b-button @click="removeIngredient(index)" variant="danger" class="ml-2">Remove</b-button>
@@ -105,7 +110,7 @@
             <b-button @click="removeInstruction(index)" variant="danger" class="ml-2">Remove</b-button>
           </div>
           <b-button @click="addInstruction" variant="success">Add Instruction</b-button>
-        </b-form-group>
+        </b-form-group> -->
       </form>
     </b-modal>
 
@@ -113,14 +118,15 @@
 </template>
 
 <script>
-import { mockAddUserRecipe } from '@/services/user.js';
+// import { mockAddUserRecipe } from '@/services/user.js';
+import axios from 'axios';
 
 export default {
   name: "App",
   data() {
     return {
       recipe: {
-        id: '',
+        // id: '',
         image: '',
         title: '',
         readyInMinutes: '',
@@ -129,18 +135,18 @@ export default {
         vegan: false,
         glutenFree: false,
         summary: '',
-        ingredients: [''],
+        ingredients: [{ name: '', amount: '' }],
         instructions: ['']
       },
-      idState: null,
+      // idState: null,
       imageState: null,
       titleState: null,
       minutesState: null,
-      likesState: null,
-      vegetarianState: null,
-      veganState: null,
-      glutenState: null,
-      submittedRecipes: []
+      likesState: null
+      // vegetarianState: null,
+      // veganState: null,
+      // glutenState: null,
+      // submittedRecipes: []
     };
   },
   methods: {
@@ -153,7 +159,7 @@ export default {
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
-      this.idState = this.recipe.id ? true : false;
+      // this.idState = this.recipe.id ? true : false;
       this.imageState = this.recipe.image ? true : false;
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
@@ -162,7 +168,7 @@ export default {
     },
     resetModal() {
       this.recipe = {
-        id: '',
+        // id: '',
         image: '',
         title: '',
         readyInMinutes: '',
@@ -171,17 +177,17 @@ export default {
         vegan: false,
         glutenFree: false,
         summary: '',
-        ingredients: [''],
+        ingredients: [{ name: '', amount: '' }],
         instructions: ['']
       };
-      this.idState = null;
+      // this.idState = null;
       this.imageState = null;
       this.titleState = null;
       this.minutesState = null;
       this.likesState = null;
-      this.vegetarianState = null;
-      this.veganState = null;
-      this.glutenState = null;
+      // this.vegetarianState = null;
+      // this.veganState = null;
+      // this.glutenState = null;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
@@ -189,28 +195,55 @@ export default {
       // Trigger submit handler
       this.handleSubmit();
     },
-    handleSubmit() {
-      // Exit when the form isn't valid
+    // handleSubmit() {
+    //   // Exit when the form isn't valid
+    //   if (!this.checkFormValidity()) {
+    //     return;
+    //   }
+    //   this.RecipeSeccssfullyAdded()
+    //   // Push the recipe to submitted recipes
+    //   this.submittedRecipes.push({ ...this.recipe });
+    //   // Hide the modal manually
+    //   this.$nextTick(() => {
+    //     this.$bvModal.hide('modal-prevent-closing');
+    //   });
+    // },
+    // RecipeSeccssfullyAdded() {
+    //   const result = mockAddUserRecipe(this.recipe);
+    //   this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
+    //   this.$router.push("/").catch(() => {
+    //     this.$forceUpdate();
+    //   });
+    // },
+    // addIngredient() {
+    //   this.recipe.ingredients.push('');
+    // },
+    async handleSubmit() {
       if (!this.checkFormValidity()) {
         return;
       }
-      this.RecipeSeccssfullyAdded()
-      // Push the recipe to submitted recipes
-      this.submittedRecipes.push({ ...this.recipe });
-      // Hide the modal manually
+        // Validate `this.recipe` before proceeding
+      if (!this.recipe || !this.recipe.title || !this.recipe.image || !this.recipe.instructions || !this.recipe.ingredients) {
+        console.error("Missing required data in recipe.");
+        // Optionally, show a user-friendly error message here
+        return;
+      }
+      try {
+        const response = await axios.post(this.$root.store.server_domain + '/user/my_recipes', this.recipe);
+        console.log("Recipe added successfully:", response.data);
+        this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
+        this.$router.push("/");
+      } catch (error) {
+        console.error("blabla:", error)
+        console.error("There was an error adding the recipe:", error);
+      }
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing');
       });
     },
-    RecipeSeccssfullyAdded() {
-      const result = mockAddUserRecipe(this.recipe);
-      this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
-    },
+    
     addIngredient() {
-      this.recipe.ingredients.push('');
+      this.recipe.ingredients.push({ name: '', amount: '' });
     },
     removeIngredient(index) {
       this.recipe.ingredients.splice(index, 1);
