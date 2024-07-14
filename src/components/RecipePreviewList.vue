@@ -50,7 +50,8 @@ export default {
 
       // Check if recipes is not empty
       if (recipes && recipes.length > 0) {
-        this.recipes = recipes; // Assign fetched recipes to component data
+        this.$emit('update:recipes', recipes); // Emit event to parent component with updated recipes
+        // this.recipes = recipes; // Assign fetched recipes to component data
       } else {
         console.warn('No recipes available or empty response:', recipes);
         // Optionally set a default message or handle no recipes scenario
@@ -61,7 +62,16 @@ export default {
     } catch (error) {
       console.error('Error fetching random recipes:', error);
     }
-  }
+  },
+  async fetchLastViewedRecipes() {
+      try {
+        const response = await axios.get(`${this.$root.store.server_domain}/users/last_viewed_recipes`);
+        const recipes = response.data.recipes;
+        this.$emit('update:lastViewedRecipes', recipes);
+      } catch (error) {
+        console.error('Error fetching last viewed recipes:', error);
+      }
+    }
 }
 };
 </script>

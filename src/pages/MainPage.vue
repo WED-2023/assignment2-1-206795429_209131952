@@ -9,8 +9,10 @@
           <button @click="fetchRandomRecipe">Random Recipe</button>
         </div>
         <RecipePreviewList
+          ref="randomRecipesList"
           title="Explore Recipes"
           :recipes="randomRecipes"
+          @update:recipes="handleUpdateRecipes"
           class="RandomRecipes center"
         />
       </div>
@@ -20,7 +22,10 @@
         </div>
         <RecipePreviewList
           v-else
+          ref="lastViewedRecipesList"
           title="Last Viewed Recipes"
+          :recipes="lastViewedRecipes"
+          @update:lastViewedRecipes="handleUpdateLastViewedRecipes"
           :class="{
             RandomRecipes: true,
             blur: !$root.store.username,
@@ -43,8 +48,8 @@ export default {
   },
    data() {
     return {
-      // allRecipes: recipes,
-      randomRecipes: recipes
+      randomRecipes: [],
+      lastViewedRecipes: []
     };
   },
   methods: {
@@ -52,17 +57,38 @@ export default {
   //   const shuffled = this.allRecipes.sort(() => 0.5 - Math.random());
   //   this.randomRecipes = shuffled.slice(0, 3);
   // }
-  async fetchRandomRecipe() {
-      try {
-        const response = await axios.get(`${this.$root.store.server_domain}/recipes/random`);
-        this.randomRecipes = response.data.recipes; // Assuming server sends an array of recipes
-      } catch (error) {
-        console.error('Error fetching random recipes:', error);
-      }
+  // async fetchRandomRecipe() {
+  //     try {
+  //       // const response = await axios.get(`${this.$root.store.server_domain}/recipes/random`);
+  //       // this.randomRecipes = response.data.recipes;
+  //       // Emit event to update recipes in RecipePreviewList
+  //       this.$refs.randomRecipes.updateRecipes();
+  //     } catch (error) {
+  //       console.error('Error fetching random recipes:', error);
+  //     }
+  //   }
+  // },
+    // handleUpdateRecipes(newRecipes) {
+    //   this.randomRecipes = newRecipes;
+    // }
+    async fetchRandomRecipe() {
+      // Call fetchRandomRecipes method in RecipePreviewList.vue through ref
+      await this.$refs.randomRecipesList.fetchRandomRecipes();
+    },
+    handleUpdateRecipes(newRecipes) {
+      this.randomRecipes = newRecipes;
+    },
+    async fetchLastViewedRecipes() {
+      await this.$refs.lastViewedRecipesList.fetchLastViewedRecipes();
+    },
+    handleUpdateLastViewedRecipes(newRecipes) {
+      this.lastViewedRecipes = newRecipes;
     }
   },
   mounted() {
-    this.fetchRandomRecipe();
+    if (this.$root.store.username) {
+      this.fetchLastViewedRecipes();
+    }
   }
 };
 </script>
