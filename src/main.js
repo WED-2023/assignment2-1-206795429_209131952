@@ -3,7 +3,6 @@ import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 
-
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);

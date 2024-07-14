@@ -223,10 +223,12 @@ export default {
         return;
       }
       try {
+        // this.axios.defaulta.withCredentials = true;
         const response = await axios.post(this.$root.store.server_domain + '/users/my_recipes', this.recipe);
         console.log("Recipe added successfully:", response.data);
         this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
         this.$router.push("/");
+        // this.axios.defaulta.withCredentials = false;
       } catch (error) {
         console.error("blabla:", error)
         console.error("There was an error adding the recipe:", error);
