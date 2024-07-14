@@ -222,14 +222,8 @@ export default {
       if (!this.checkFormValidity()) {
         return;
       }
-        // Validate `this.recipe` before proceeding
-      if (!this.recipe || !this.recipe.title || !this.recipe.image || !this.recipe.instructions || !this.recipe.ingredients) {
-        console.error("Missing required data in recipe.");
-        // Optionally, show a user-friendly error message here
-        return;
-      }
       try {
-        const response = await axios.post(this.$root.store.server_domain + '/user/my_recipes', this.recipe);
+        const response = await axios.post(this.$root.store.server_domain + '/users/my_recipes', this.recipe);
         console.log("Recipe added successfully:", response.data);
         this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
         this.$router.push("/");

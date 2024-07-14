@@ -14,7 +14,7 @@
       </div>
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
-        <li>{{ recipe.aggregateLikes }} likes</li>
+        <li>{{ recipe.popularity }} likes</li>
         <li v-if="recipe.vegetarian">
           <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
         </li>
@@ -29,17 +29,15 @@
             <b-icon :icon="icon" class="no-background"></b-icon>
           </button>
         </li>
-        <li v-if="recipe.instructions.length">
-          <div>
-            <h4>Instructions:</h4>
-            <ol>
-              <li v-for="(instruction, index) in recipe.analyzedInstructions" :key="index">
-                {{ instruction }}
-              </li>
-            </ol>
-          </div>
-        </li>
       </ul>
+      <div v-if="recipe.analyzedInstructions.length" class="instructions">
+        <h4>Instructions:</h4>
+        <ol>
+          <li v-for="(instruction, index) in recipe.analyzedInstructions[0].steps" :key="index">
+            {{ instruction.step }}
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </template>
@@ -151,5 +149,20 @@ export default {
   background-color: transparent;
   color: #f0ad4e;
   font-size: 1.5rem;
+}
+
+.instructions {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 10pt;
+}
+.instructions h4 {
+  margin: 0;
+  font-size: 12pt;
+  text-align: center;
+}
+.instructions ol {
+  padding-left: 20px;
+  margin: 5px 0;
 }
 </style>

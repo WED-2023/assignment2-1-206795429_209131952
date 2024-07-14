@@ -10,11 +10,19 @@
         "glutenFree": false,
         "summary": "Enjoy the rich flavors of grandma Beet Kubbeh, a traditional Middle Eastern dish made every friday. One serving contains <b>250 calories</b>, <b>10g of protein</b>, and <b>8g of fat</b>. For <b>$2.50 per serving</b>, this recipe <b>covers 15%</b> of your daily requirements of vitamins and minerals. This recipe serves 6. A blend of beets, bulgur, meat filling, and spices makes this dish both hearty and delicious. 120 people have tried and liked this recipe. It is brought to you by middleeasternrecipes.com. From preparation to the plate, this recipe takes approximately <b>90 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 85%</b>, which is impressive. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/beet-kubbeh-1234567\">Beet Kubbeh</a>, <a href=\"https://spoonacular.com/recipes/classic-kubbeh-1223456\">Classic Kubbeh</a>, and <a href=\"https://spoonacular.com/recipes/vegetarian-kubbeh-1223345\">Vegetarian Kubbeh</a>.",
         "instructions": [
-            "1. Prepare the Dough: Peel and grate the beets. In a large bowl, mix the grated beets with bulgur, and let it sit for about 30 minutes to allow the bulgur to absorb the moisture. After 30 minutes, add salt and spices to the mixture and knead well to form a dough.",
-            "2. Prepare the Filling: In a separate pan, cook the meat with onions and your choice of spices until fully cooked. Let the meat mixture cool, then shape it into small balls.",
-            "3. Form the Kubbeh: Take a small portion of the beet and bulgur dough and flatten it in your hand. Place a meatball in the center and wrap the dough around it to form a ball. Repeat this process until all the dough and filling are used.",
-            "4. Cook the Kubbeh: In a large pot, bring water to a boil. Gently add the kubbeh balls to the boiling water and cook for about 40-50 minutes until they are fully cooked and the flavors meld together.",
-            "5. Serve: Serve the beet kubbeh hot, garnished with fresh herbs or a squeeze of lemon juice if desired."
+            "Prepare the Dough: Peel and grate the beets. In a large bowl, mix the grated beets with bulgur, and let it sit for about 30 minutes to allow the bulgur to absorb the moisture. After 30 minutes, add salt and spices to the mixture and knead well to form a dough.",
+            "Prepare the Filling: In a separate pan, cook the meat with onions and your choice of spices until fully cooked. Let the meat mixture cool, then shape it into small balls.",
+            "Form the Kubbeh: Take a small portion of the beet and bulgur dough and flatten it in your hand. Place a meatball in the center and wrap the dough around it to form a ball. Repeat this process until all the dough and filling are used.",
+            "Cook the Kubbeh: In a large pot, bring water to a boil. Gently add the kubbeh balls to the boiling water and cook for about 40-50 minutes until they are fully cooked and the flavors meld together.",
+            "Serve: Serve the beet kubbeh hot, garnished with fresh herbs or a squeeze of lemon juice if desired."
+        ],
+        "ingredients": [
+            "3 beets",
+            "1 cup bulgur",
+            "1/2 lb ground meat",
+            "1 onion",
+            "Salt",
+            "Spices (to taste)"
         ]
     },
     {
@@ -28,10 +36,19 @@
         "glutenFree": true,
         "summary": "Molokhia is a traditional Middle Eastern dish made from jute leaves. My grandma makes it every friday. One serving contains <b>180 calories</b>, <b>12g of protein</b>, and <b>8g of fat</b>. For <b>$1.80 per serving</b>, this recipe <b>covers 20%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A combination of molokhia leaves, chicken, garlic, and spices makes this dish both nutritious and flavorful. 200 people have tried and liked this recipe. It is brought to you by middleeasternrecipes.com. From preparation to the plate, this recipe takes approximately <b>60 minutes</b>. Taking all factors into account, this recipe <b>earns a spoonacular score of 90%</b>, which is excellent. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/molokhia-1234567\">Molokhia</a>, <a href=\"https://spoonacular.com/recipes/molokhia-with-chicken-1223456\">Molokhia with Chicken</a>, and <a href=\"https://spoonacular.com/recipes/egyptian-molokhia-1223345\">Egyptian Molokhia</a>.",
         "instructions": [
-            "1. Prepare the Chicken: In a pot, boil the chicken with water and spices until fully cooked. Remove the chicken from the broth, let it cool, then shred it into bite-sized pieces.",
-            "2. Prepare the Molokhia: Wash the molokhia leaves thoroughly and chop them finely.",
-            "3. Cook the Molokhia: In a separate pot, sauté minced garlic in oil until golden brown. Add the chopped molokhia leaves and stir well. Pour in the chicken broth and bring the mixture to a simmer. Add the shredded chicken and let it cook for about 20-30 minutes, stirring occasionally.",
-            "4. Season and Serve: Season the molokhia with salt, pepper, and other spices to taste. Serve hot over rice or with bread."
+            "Prepare the Chicken: In a pot, boil the chicken with water and spices until fully cooked. Remove the chicken from the broth, let it cool, then shred it into bite-sized pieces.",
+            "Prepare the Molokhia: Wash the molokhia leaves thoroughly and chop them finely.",
+            "Cook the Molokhia: In a separate pot, sauté minced garlic in oil until golden brown. Add the chopped molokhia leaves and stir well. Pour in the chicken broth and bring the mixture to a simmer. Add the shredded chicken and let it cook for about 20-30 minutes, stirring occasionally.",
+            "Season and Serve: Season the molokhia with salt, pepper, and other spices to taste. Serve hot over rice or with bread."
+        ],
+        "ingredients": [
+            "1 lb chicken",
+            "4 cups water",
+            "2 cups molokhia leaves",
+            "4 cloves garlic",
+            "Salt",
+            "Pepper",
+            "Spices (to taste)"
         ]
     },
     {
@@ -45,12 +62,20 @@
         "glutenFree": false,
         "summary": "Indulge in the delightful taste of Ma'amoul Cookies that my grandma makes every friday, a traditional Middle Eastern treat. Each serving provides <b>150 calories</b>, <b>2g of protein</b>, and <b>8g of fat</b>. At just <b>$0.50 per serving</b>, this recipe satisfies 10% of your daily nutritional needs. This recipe serves 12. These cookies are filled with a mixture of dates, nuts, and spices, creating a heavenly combination of flavors. 200 people have enjoyed and recommended this recipe. It's presented by middleeasternrecipes.com. From start to finish, these cookies take approximately <b>60 minutes</b> to make. Considering various factors, this recipe receives a spoonacular score of <b>90%</b>, indicating its high quality. If you love this recipe, explore these similar options: <a href=\"https://spoonacular.com/recipes/date-filled-cookies-789012\">Date Filled Cookies</a>, <a href=\"https://spoonacular.com/recipes/rose-water-cookies-789123\">Rose Water Cookies</a>, and <a href=\"https://spoonacular.com/recipes/pistachio-shortbread-cookies-789234\">Pistachio Shortbread Cookies</a>.",
         "instructions": [
-            "1. Prepare the Filling: Pit and chop the dates finely. In a bowl, mix the chopped dates with nuts and spices to form a paste.",
-            "2. Prepare the Dough: In a separate bowl, prepare the dough by mixing flour, butter, sugar, and a pinch of salt. Knead the dough until it is smooth and pliable.",
-            "3. Shape the Cookies: Take a small portion of the dough and flatten it in your hand. Place a small amount of the date and nut filling in the center of the dough. Fold the dough over the filling and shape it into a ball or mold it into a traditional Ma'amoul mold if available. Repeat this process until all the dough and filling are used.",
-            "4. Bake the Cookies: Preheat the oven to 350°F (175°C). Place the shaped cookies on a baking sheet lined with parchment paper. Bake the cookies for about 20-25 minutes or until they are lightly golden.",
-            "5. Cool and Serve: Allow the cookies to cool completely on a wire rack. Serve the Ma'amoul cookies with a dusting of powdered sugar if desired."
+            "Prepare the Filling: Pit and chop the dates finely. In a bowl, mix the chopped dates with nuts and spices to form a paste.",
+            "Prepare the Dough: In a separate bowl, prepare the dough by mixing flour, butter, sugar, and a pinch of salt. Knead the dough until it is smooth and pliable.",
+            "Shape the Cookies: Take a small portion of the dough and flatten it in your hand. Place a small amount of the date and nut filling in the center of the dough. Fold the dough over the filling and shape it into a ball or mold it into a traditional Ma'amoul mold if available. Repeat this process until all the dough and filling are used.",
+            "Bake the Cookies: Preheat the oven to 350°F (175°C). Place the shaped cookies on a baking sheet lined with parchment paper. Bake the cookies for about 20-25 minutes or until they are lightly golden.",
+            "Cool and Serve: Allow the cookies to cool completely on a wire rack. Serve the Ma'amoul cookies with a dusting of powdered sugar if desired."
+        ],
+        "ingredients": [
+            "2 cups flour",
+            "1 cup butter",
+            "1/2 cup sugar",
+            "Pinch of salt",
+            "1 cup dates",
+            "1/2 cup nuts",
+            "Spices (to taste)"
         ]
     }
 ]
-

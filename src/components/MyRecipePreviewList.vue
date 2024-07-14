@@ -38,7 +38,7 @@
       async updateRecipes() {
         try {
           const response = await this.axios.get(
-            this.$root.store.server_domain + "/user/my_recipes",
+            this.$root.store.server_domain + "/users/my_recipes",
           );
   
           // const amountToFetch = 3; // Set this to how many recipes you want to fetch

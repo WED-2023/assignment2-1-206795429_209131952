@@ -4,9 +4,11 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <div v-if="recipes.length === 0">No recipes available.</div>
-    <div v-else>
+    <div v-if="recipes && recipes.length > 0">
       <RecipePreview v-for="r in recipes" :key="r.id" :recipe="r" />
+    </div>
+    <div v-else>
+      No recipes available.
     </div>
   </b-container>
 </template>
@@ -41,32 +43,26 @@ export default {
   },
   methods: {
     async updateRecipes() {
-      try {
-        // const response = await this.axios.get(
-        //   this.$root.store.server_domain + "/recipes/random",
-        // );
-
-        const amountToFetch = 3; // Set this to how many recipes you want to fetch
-        const response = mockGetRecipesPreview(amountToFetch);
-
-
-        console.log(response);
-        const recipes = response.data.recipes;
-        console.log(recipes);
-        this.recipes = [];
-        this.recipes.push(...recipes);
-      } catch (error) {
-        console.log(error);
-      }
     try {
-      const response = await axios.get(this.$root.store.server_domain+'/recipes/random');
+      const response = await axios.get(`${this.$root.store.server_domain}/recipes/random`);
       const recipes = response.data;
-      this.recipes = recipes;
+      console.log('API Response:', response);
+
+      // Check if recipes is not empty
+      if (recipes && recipes.length > 0) {
+        this.recipes = recipes; // Assign fetched recipes to component data
+      } else {
+        console.warn('No recipes available or empty response:', recipes);
+        // Optionally set a default message or handle no recipes scenario
+        // For example:
+        // this.recipes = []; // Clear existing recipes
+        // this.recipes = null; // Or set it to null
+      }
     } catch (error) {
       console.error('Error fetching random recipes:', error);
     }
   }
-  }
+}
 };
 </script>
 

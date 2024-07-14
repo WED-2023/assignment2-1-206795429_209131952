@@ -107,7 +107,7 @@
       </b-dropdown>
       <div v-if="recipes.length > 0">
         <h2>Search Results</h2>
-        <div v-for="recipe in sortedRecipes" :key="recipe.id">
+        <div v-for="recipe in recipes" :key="recipe.id">
           <!-- Display recipe details -->
           <SearchRecipePreview class="recipePreview" :recipe="recipe" />
         </div>
@@ -128,9 +128,11 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
-import { mockGetRecipesPreviewFromSearch } from "../services/recipes.js";
+// import { mockGetRecipesPreviewFromSearch } from "../services/recipes.js";
 import SearchRecipePreview from "../components/SearchRecipePreview.vue";
 import { cuisines, diets, intolerances } from '../assets/filters.js';
+import axios from 'axios';
+
 export default {
   name: "search",
   components: {
@@ -151,14 +153,22 @@ export default {
       diets: [], // Data property for diets filter
       intolerances: [], // Data property for intolerances filter
       recipes: [], // Array to hold search results
-      searchPerformed: false // Flag to indicate if search has been performed
+      searchPerformed: false, // Flag to indicate if search has been performed
+      sortOption: ""
     };
   },
   created() {
+    // Check if user is logged in and load last search if true
+  if (this.$root.loggedIn) {
+    this.loadLastSearch();
+  }
     // Populate the filters from the imported file
     this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
     this.diets = diets.map(d => ({ label: d.text, value: d.value }));
     this.intolerances = intolerances.map(i => ({ label: i.text, value: i.value }));
+    if (this.$root.loggedIn) {
+      this.loadLastSearch();
+    }
   },
   validations: {
     form: {
@@ -169,42 +179,89 @@ export default {
   },
 
   methods: {
+    async loadLastSearch() {
+    try {
+      // Make an API call to fetch last search results
+      const response = await axios.get(this.$root.store.server_domain+'/recipes/last-search'); // Adjust API endpoint as per your backend implementation
+      this.recipes = response.data.recipes; // Assuming your response contains a 'recipes' array
+      this.searchPerformed = true; // Indicate search has been performed
+    } catch (error) {
+      console.error('Error loading last search:', error);
+      // Handle error as needed
+    }
+  },
+
         validateState(param) {
       const { $dirty, $error } = this.$v.form[param];
       return $dirty ? !$error : null;
     },
     
-      async Search() {
-      try {
+    //   async Search() {
+    //   try {
         
-        // const response = await this.axios.post(
-        //   this.$root.store.server_domain +"/Login",
+    //     const response = await this.axios.post(
+    //       this.$root.store.server_domain +"/Login",
 
 
-        //   {
-        //     username: this.form.username,
-        //     password: this.form.password
-        //   }
-        // );
+    //       {
+    //         username: this.form.username,
+    //         password: this.form.password
+    //       }
+    //     );
 
-        const success = true; // modify this to test the error handling
-        // const response = mockSearch(this.form.search, success);
+    //     const success = true; // modify this to test the error handling
+    //     // const response = mockSearch(this.form.search, success);
 
-        const response = mockGetRecipesPreviewFromSearch(5);
-        this.searchPerformed = true; // Set searchPerformed to true after search
+    //     // const response = mockGetRecipesPreviewFromSearch(5);
+    //     this.searchPerformed = true; // Set searchPerformed to true after search
 
-        // console.log(response);
-        // this.$root.loggedIn = true;
-        //console.log(this.$root.store.login);
-        //this.$root.store.login(this.form.username);
-        //this.$router.push("/");
-        const recipes = response.data.recipes; // Assuming your response contains a 'recipes' array
-        this.recipes = recipes
-      } catch (err) {
-        console.log(err.response);
-        this.form.submitError = err.response.data.message;
+    //     console.log(response);
+    //     this.$root.loggedIn = true;
+    //     console.log(this.$root.store.login);
+    //     this.$root.store.login(this.form.username);
+    //     this.$router.push("/");
+    //     const recipes = response.data.recipes; // Assuming your response contains a 'recipes' array
+    //     this.recipes = recipes
+    //   } catch (err) {
+    //     console.log(err.response);
+    //     this.form.submitError = err.response.data.message;
+    //   }
+    // },
+    async Search() {
+    try {
+      const response = await axios.get(this.$root.store.server_domain+`/recipes/search`, {
+      params: {
+        recipeName: this.form.search,
+        cuisine: this.selectedCuisines,
+        diet: this.selectedDiets,
+        intolerance: this.selectedIntolerances,
+        number: this.recipesPerPage
       }
-    },
+    });
+
+      this.searchPerformed = true; // Indicate search has been performed
+      this.recipes = response.data; // Assuming response.data contains an array of recipes
+
+      // Save search results if user is logged in
+      if (this.$root.loggedIn) {
+        this.saveLastSearch(response.data);
+      }
+    } catch (err) {
+      console.error('Error searching recipes:', err);
+      // Handle error here, such as setting an error message
+    }
+  },
+
+  async saveLastSearch(recipes) {
+    try {
+      // Make an API call to save last search results
+      await axios.post(this.$root.store.server_domain+'/recipes/save-last-search', { recipes }); // Adjust API endpoint as per your backend implementation
+    } catch (error) {
+      console.error('Error saving last search:', error);
+      // Handle error as needed
+    }
+  },
+
     onSearch() {
       // console.log("login method called");
       this.form.submitError = undefined;
@@ -217,23 +274,22 @@ export default {
       this.Search();
 
     },
-      sortRecipes(option) {
-        this.sortOption = option;
-        if (option === "liked") {
-          this.recipes.sort((a, b) => b.likes - a.likes); // Sort by likes (high to low)
-        } else if (option === "time") {
-          this.recipes.sort((a, b) => a.prepTime - b.prepTime); // Sort by prepTime (low to high)
-        }
-      }
+    sortRecipes(option) {
+    this.sortOption = option;
+  }
     },
     computed: {
       sortedRecipes() {
+        // Create a copy of recipes to avoid mutating the original array
+        let sorted = [...this.recipes];
         if (this.sortOption === "liked") {
-          return this.recipes.slice().sort((a, b) => b.likes - a.likes);
+        // Sort by likes (high to low)
+        sorted.sort((a, b) => b.likes - a.likes);
         } else if (this.sortOption === "time") {
-          return this.recipes.slice().sort((a, b) => a.prepTime - b.prepTime);
+          // Sort by prepTime (low to high)
+          sorted.sort((a, b) => a.prepTime - b.prepTime);
         }
-        return this.recipes;
+        return sorted;
       }
   }
 };

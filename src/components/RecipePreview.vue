@@ -34,7 +34,9 @@
 </template>
 
 <script>
-import { mockAddFavorite } from '@/services/user';
+// import { mockAddFavorite } from '@/services/user';
+import axios from 'axios';
+import store from '@/store';
 import { computed } from 'vue';
 export default {
   data() {
@@ -53,25 +55,29 @@ export default {
   computed: {
     icon() {
       return this.isFull ? 'star-fill' : 'star';
+    },
+    Strikethrough() {
+      return this.isFull ? 'Remove from favorites' : 'Add to favorites';
     }
   },
   methods: {
-    toggleIcon() {
-      this.isFull = !this.isFull;
-      if (this.isFull) {
-      // Call mockAddFavorite when star changes to full
-      const result = mockAddFavorite(this.recipe.id);
-       this.$root.toast("Add to favorites", "Recipe successfully added to your favorites :)", "success");
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
-      }
-      if (! this.isFull) {
-      // Call mockAddFavorite when star changes to full
-       this.$root.toast("Remove from favorites", "Recipe successfully removed from your favorites", "success");
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
+    async toggleIcon() {
+      try {
+        this.axios.defaults.withCredentials = true;
+        const response = await axios.post(this.$root.store.server_domain+'/users/favorites', {
+          recipeId: this.recipe.id
+        });
+        console.log("this is response: ", response)
+
+        if (response.status === 200) {
+          this.isFull = !this.isFull;
+          const action = this.isFull ? 'added to' : 'removed from';
+          this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
+        }
+        this.axios.defaults.withCredentials = false;
+      } catch (error) {
+        // Handle error
+        console.error('Error toggling favorite:', error);
       }
     },
   markRecipeAsViewed() {

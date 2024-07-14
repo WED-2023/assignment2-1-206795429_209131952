@@ -28,8 +28,18 @@
               </div>
               Summary:
               <p v-html="recipe.summary"></p>
-              instructions:
-              <p v-html="recipe.instructions"></p>
+              <p>Ingredients:</p>
+            <ul>
+              <li v-for="(ingredient, index) in recipe.ingredients" :key="index">
+                {{ ingredient }}
+              </li>
+            </ul>
+            <p>Instructions:</p>
+            <ol>
+              <li v-for="(step, index) in recipe.instructions" :key="index">
+                {{ step }}
+              </li>
+            </ol>
             </div>
           </div>
           </div>
