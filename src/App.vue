@@ -54,9 +54,6 @@
           <b-form-input id="minutes-input" type="number" v-model="recipe.readyInMinutes" :state="minutesState" required></b-form-input>
         </b-form-group>
        
-        <b-form-group label="Aggregate Likes" label-for="likes-input" invalid-feedback="Aggregate Likes is required" :state="likesState">
-          <b-form-input id="likes-input" type="number" v-model="recipe.aggregateLikes" :state="likesState" required></b-form-input>
-        </b-form-group>
        
         <b-form-group label="Vegetarian" label-for="vegetarian-input" :state="vegetarianState">
           <b-form-checkbox id="vegetarian-input" v-model="recipe.vegetarian"></b-form-checkbox>
@@ -130,7 +127,6 @@ export default {
         image: '',
         title: '',
         readyInMinutes: '',
-        aggregateLikes: '',
         vegetarian: false,
         vegan: false,
         glutenFree: false,
@@ -142,7 +138,6 @@ export default {
       imageState: null,
       titleState: null,
       minutesState: null,
-      likesState: null,
       vegetarianState: null,
       veganState: null,
       glutenState: null
@@ -163,7 +158,6 @@ export default {
       this.imageState = this.recipe.image ? true : false;
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
-      this.likesState = this.recipe.aggregateLikes ? true : false;
       return valid;
     },
     resetModal() {
@@ -172,7 +166,7 @@ export default {
         image: '',
         title: '',
         readyInMinutes: '',
-        aggregateLikes: '',
+  
         vegetarian: false,
         vegan: false,
         glutenFree: false,
@@ -184,7 +178,6 @@ export default {
       this.imageState = null;
       this.titleState = null;
       this.minutesState = null;
-      this.likesState = null;
       this.vegetarianState = null;
       this.veganState = null;
       this.glutenState = null;

@@ -5,7 +5,7 @@
       <slot></slot>
     </h3>
     <div v-if="recipes && recipes.length > 0">
-      <RecipePreview v-for="r in recipes" :key="r.id" :recipe="r" @viewed="handleViewedRecipe(r.id)"/>
+      <RecipePreview v-for="r in recipes" :key="r.id" :recipe="r"/>
     </div>
     <div v-else>
       No recipes available.
@@ -75,20 +75,20 @@ export default {
         console.error('Error fetching last viewed recipes:', error);
       }
     },
-    async markAsViewed(recipeId) {
-      try {
-        await axios.post(`${this.$root.store.server_domain}/users/last_viewed_recipes`, { recipe_id: recipeId }, {
-          withCredentials: true // Ensure cookies or session tokens are sent
-        });
-        console.log('Recipe marked as viewed:', recipeId);
-      } catch (error) {
-        console.error('Error marking recipe as viewed:', error);
-      }
-    },
-  handleViewedRecipe(recipeId) {
-    this.markAsViewed(recipeId);
-    // Any additional logic when a recipe is viewed can be added here
-  }
+    // async markAsViewed(recipeId) {
+    //   try {
+    //     await axios.post(`${this.$root.store.server_domain}/users/last_viewed_recipes`, { recipe_id: recipeId }, {
+    //       withCredentials: true // Ensure cookies or session tokens are sent
+    //     });
+    //     console.log('Recipe marked as viewed:', recipeId);
+    //   } catch (error) {
+    //     console.error('Error marking recipe as viewed:', error);
+    //   }
+    // },
+  // handleViewedRecipe(recipeId) {
+  //   this.markAsViewed(recipeId);
+  //   // Any additional logic when a recipe is viewed can be added here
+  // }
 }
 };
 </script>

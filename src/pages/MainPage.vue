@@ -73,7 +73,7 @@ export default {
     // }
     async fetchRandomRecipe() {
       // Call fetchRandomRecipes method in RecipePreviewList.vue through ref
-      await this.$refs.randomRecipesList.fetchRandomRecipes();
+      await this.$refs.randomRecipesList.updateRecipes();
     },
     handleUpdateRecipes(newRecipes) {
       this.randomRecipes = newRecipes;

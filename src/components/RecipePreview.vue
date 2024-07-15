@@ -1,10 +1,8 @@
 <template>
   <div class="recipe-preview" :class="{'viewed': isViewed}">
   <router-link
-    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-    @click.native="markRecipeAsViewed"
-  >
-    <div class="recipe-body" >
+    :to="{ name: 'recipe', params: { recipeId: recipe.id } }">
+    <div class="recipe-body" @click="markRecipeAsViewed">
       <img :src="recipe.image" class="recipe-image" />
     </div>
   </router-link>
@@ -63,7 +61,7 @@ export default {
   methods: {
     async toggleIcon() {
       try {
-        this.axios.defaults.withCredentials = true;
+        axios.defaults.withCredentials = true;
         const response = await axios.post(this.$root.store.server_domain+'/users/favorites', {
           recipeId: this.recipe.id
         });
@@ -74,16 +72,25 @@ export default {
           const action = this.isFull ? 'added to' : 'removed from';
           this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
         }
-        this.axios.defaults.withCredentials = false;
+        axios.defaults.withCredentials = false;
       } catch (error) {
         // Handle error
         console.error('Error toggling favorite:', error);
       }
     },
-  markRecipeAsViewed() {
-      this.isViewed = true;
-      sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');
-  },
+  async markRecipeAsViewed() {
+    this.isViewed = true;
+    sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');
+    try {
+        await axios.post(`${this.$root.store.server_domain}/users/last_viewed_recipes`, { recipe_id: this.recipe.id }, {
+          withCredentials: true // Ensure cookies or session tokens are sent
+        });
+        this.isViewed = true;
+        console.log('Recipe marked as viewed:', recipeId);
+      } catch (error) {
+        console.error('Error marking recipe as viewed:', error);
+      }
+    },
   checkIfViewed() {
     // this.isViewed = false;
     const viewed = sessionStorage.getItem(`recipe-viewed-${this.recipe.id}`);

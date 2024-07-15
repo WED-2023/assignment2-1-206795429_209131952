@@ -27,35 +27,31 @@
               <p>Ingredients:</p>
             <ul>
               <li v-for="(ingredient, index) in recipe.ingredients" :key="index">
-                {{ ingredient }}
+                 {{ ingredient.amount }} {{ ingredient.ingredient }}
               </li>
             </ul>
             <p>Instructions:</p>
             <ol>
-              <li v-for="(step, index) in recipe.instructions" :key="index">
-                {{ step }}
+              <li v-for="(instruction, index) in recipe.instructions" :key="index">
+                {{ instruction.instruction }}
               </li>
             </ol>
             </div>
           </div>
           </div>
         </div>
-        <!-- <pre>
-        {{ $route.params }}
-        {{ recipe }}
-      </pre
-        > -->
+        <!-- {{ $route.params }}
+        {{ recipe }} -->
       </div>
   </template>
   
   <script>
-  import axios from 'axios';
+import axios from 'axios';
 import { mockGetRecipeFullDetails } from "../services/recipes.js";
 export default {
   data() {
     return {
-       isFull: false,
-      recipe: {}
+      recipe: null
     };
   },
   async created() {
@@ -65,7 +61,7 @@ export default {
 
       try {
         response = await this.axios.get(
-        `${this.$root.store.server_domain}/users/my_recipes/${this.$root.params.title}`,
+        `${this.$root.store.server_domain}/users/my_recipes/${this.$route.params.title}`,
         { withCredentials: true }
         );
 
@@ -87,38 +83,28 @@ export default {
       }
 
       let {
-        analyzedInstructions,
         instructions,
-        extendedIngredients,
-        aggregateLikes,
         readyInMinutes,
         image,
         vegetarian,
         vegan,
+        summary,
+        ingredients,
         glutenFree,
-        servings,
         title
       } = recipe;
 
-      let _instructions = analyzedInstructions
-        .map((fstep) => {
-          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-          return fstep.steps;
-        })
-        .reduce((a, b) => [...a, ...b], []);
+    
 
       let _recipe = {
         instructions,
-        _instructions,
-        analyzedInstructions,
-        extendedIngredients,
-        aggregateLikes,
         readyInMinutes,
         image,
         vegetarian,
         vegan,
+        summary,
+        ingredients,
         glutenFree,
-        servings,
         title
       };
 

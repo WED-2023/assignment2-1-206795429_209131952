@@ -2,7 +2,6 @@
     <div class="recipe-preview" :class="{'viewed': isViewed}">
     <router-link
       :to="{ name: 'myrecipe', params: { title: recipe.title } }"
-      @click.native="markRecipeAsViewed"
     >
       <div class="recipe-body" >
         <img :src="recipe.image" class="recipe-image" />
@@ -44,27 +43,6 @@
         type: Object,
         required: true
       },
-    },
-    computed: {
-      icon() {
-        return this.isFull ? 'star-fill' : 'star';
-      }
-    },
-    methods: {
-    markRecipeAsViewed() {
-        this.isViewed = true;
-        sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');
-    },
-    checkIfViewed() {
-      // this.isViewed = false;
-      const viewed = sessionStorage.getItem(`recipe-viewed-${this.recipe.id}`);
-      if (viewed) {
-        this.isViewed = true;
-      }
-    }
-    },
-    created() {
-      this.checkIfViewed();
     },
   };
    
