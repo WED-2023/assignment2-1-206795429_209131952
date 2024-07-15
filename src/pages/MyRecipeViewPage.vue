@@ -10,6 +10,7 @@
             <div class="wrapped">
               <div class="mb-3">
                 <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
+                <div>Servings: {{ recipe.servings }} </div>
                 <div class="logo-container">
                 <div v-if="recipe.vegetarian">
                   <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
@@ -83,6 +84,7 @@ export default {
       }
 
       let {
+        servings,
         instructions,
         readyInMinutes,
         image,
@@ -97,6 +99,7 @@ export default {
     
 
       let _recipe = {
+        servings,
         instructions,
         readyInMinutes,
         image,

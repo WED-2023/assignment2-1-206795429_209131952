@@ -53,6 +53,10 @@
         <b-form-group label="Ready In Minutes" label-for="minutes-input" invalid-feedback="Ready In Minutes is required" :state="minutesState">
           <b-form-input id="minutes-input" type="number" v-model="recipe.readyInMinutes" :state="minutesState" required></b-form-input>
         </b-form-group>
+
+        <b-form-group label="Servings" label-for="serving-input" invalid-feedback="Servings is required" :state="servingsState">
+          <b-form-input id="servings-input" type="number" v-model="recipe.servings" :state="servingsState" required></b-form-input>
+        </b-form-group>
        
        
         <b-form-group label="Vegetarian" label-for="vegetarian-input" :state="vegetarianState">
@@ -124,6 +128,7 @@ export default {
     return {
       recipe: {
         // id: '',
+        servings: '',
         image: '',
         title: '',
         readyInMinutes: '',
@@ -135,6 +140,7 @@ export default {
         instructions: ['']
       },
       // idState: null,
+      servingsState: null,
       imageState: null,
       titleState: null,
       minutesState: null,
@@ -158,11 +164,13 @@ export default {
       this.imageState = this.recipe.image ? true : false;
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
+      this.servingsState = this.recipe.servings ? true : false;
       return valid;
     },
     resetModal() {
       this.recipe = {
         // id: '',
+        servings: '',
         image: '',
         title: '',
         readyInMinutes: '',
@@ -175,6 +183,7 @@ export default {
         instructions: ['']
       };
       // this.idState = null;
+      this.servingsState = null;
       this.imageState = null;
       this.titleState = null;
       this.minutesState = null;
