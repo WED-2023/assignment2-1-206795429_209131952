@@ -15,6 +15,11 @@ export default {
   components: {
     MyRecipePreviewList
   },
+  data(){
+    return{
+      myRecipes: []
+    }
+  }
 };
 
 </script>

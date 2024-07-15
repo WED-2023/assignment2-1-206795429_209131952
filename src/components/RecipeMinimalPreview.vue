@@ -14,7 +14,6 @@
       </div>
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
-        <li>{{ recipe.aggregateLikes }} likes</li>
         <li v-if="this.recipe.vegetarian">
           <img src="../assets/vegetarian-logo.png" class="tiny_logo" />
         </li>
@@ -24,10 +23,6 @@
         <li v-if="this.recipe.glutenFree">
           <img src="../assets/gluten_free.png" class="tiny_logo" />
         </li>
-        <li>
-          <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
-    <b-icon :icon="icon" class="no-background"></b-icon>
-  </button></li>
       </ul>
     </div>
   </div>
@@ -56,18 +51,6 @@ export default {
     }
   },
   methods: {
-    toggleIcon() {
-      this.isFull = !this.isFull;
-      if (this.isFull) {
-      // Call mockAddFavorite when star changes to full
-      const result = mockAddFavorite(this.recipe.id);
-       this.$root.toast("Add to favorites", "Recipe successfully added to your favorites :)", "success");
-      }
-      if (! this.isFull) {
-      // Call mockAddFavorite when star changes to full
-       this.$root.toast("Remove from favorites", "Recipe successfully removed from your favorites", "success");
-      }
-    },
   markRecipeAsViewed() {
       this.isViewed = true;
       sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');

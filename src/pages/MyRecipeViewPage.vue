@@ -20,9 +20,6 @@
                 <div v-if="recipe.glutenFree">
                   <img src="../assets/gluten_free.png" class="tiny_logo" />
                 </div>
-                <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
-                    <b-icon :icon="icon" class="no-background"></b-icon>
-                </button>
                 </div>
               </div>
               Summary:
@@ -52,44 +49,97 @@
   </template>
   
   <script>
-  import { mockFamilyRecipeView } from "../services/recipes.js";
-  export default {
-    data() {
-      return {
-         isFull: false,
-        recipe: null 
-      };
-    },
-    async created() {
+  import axios from 'axios';
+import { mockGetRecipeFullDetails } from "../services/recipes.js";
+export default {
+  data() {
+    return {
+       isFull: false,
+      recipe: {}
+    };
+  },
+  async created() {
     try {
-      const response = mockFamilyRecipeView(this.$route.params.recipeId);
-      const recipe = response.data.recipe;
-      
-      if (!recipe) {
-        // Handle scenario where recipe is not found
+      let response;
+      response = this.$route.params.response;
+
+      try {
+        response = await this.axios.get(
+        `${this.$root.store.server_domain}/users/my_recipes/${this.$root.p.title}`,
+        { withCredentials: true }
+        );
+
+        console.log("response.status", response.status);
+        console.log("response.data", response.data);  // Add this line to log the response data
+        if (response.status !== 200) this.$router.replace("/NotFound");
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");
         return;
       }
-      
-      // Set the recipe to component data
-      this.recipe = recipe;
+
+      let recipe = response.data; // Adjusted to directly use response data
+      console.log("recipe", recipe);  // Add this line to log the recipe data
+
+      if (!recipe) {
+        this.$router.replace("/NotFound");
+        return;
+      }
+
+      let {
+        analyzedInstructions,
+        instructions,
+        extendedIngredients,
+        aggregateLikes,
+        readyInMinutes,
+        image,
+        vegetarian,
+        vegan,
+        glutenFree,
+        servings,
+        title
+      } = recipe;
+
+      let _instructions = analyzedInstructions
+        .map((fstep) => {
+          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
+          return fstep.steps;
+        })
+        .reduce((a, b) => [...a, ...b], []);
+
+      let _recipe = {
+        instructions,
+        _instructions,
+        analyzedInstructions,
+        extendedIngredients,
+        aggregateLikes,
+        readyInMinutes,
+        image,
+        vegetarian,
+        vegan,
+        glutenFree,
+        servings,
+        title
+      };
+
+      console.log("_recipe", _recipe);  // Add this line to log the transformed recipe data
+      this.recipe = _recipe;
     } catch (error) {
-      console.error(error);
-      this.$router.replace("/NotFound");
+      console.log(error);
     }
   },
-      computed: {
-      icon() {
-        return this.isFull ? 'star-fill' : 'star';
-      }
+  computed: {
+    icon() {
+      return this.isFull ? 'star-fill' : 'star';
+    }
+  },
+  methods: {
+    toggleIcon() {
+      this.isFull = !this.isFull;
     },
-      methods: {
-      toggleIcon() {
-        this.isFull = !this.isFull;
-      },
-      }
-  };
-  </script>
+  }
+};
+</script>
   
   <style scoped>
   .wrapper {
