@@ -65,7 +65,7 @@ export default {
 
       try {
         response = await this.axios.get(
-        `${this.$root.store.server_domain}/users/my_recipes/${this.$root.p.title}`,
+        `${this.$root.store.server_domain}/users/my_recipes/${this.$root.params.title}`,
         { withCredentials: true }
         );
 
