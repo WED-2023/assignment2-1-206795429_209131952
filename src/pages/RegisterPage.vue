@@ -35,7 +35,7 @@
         label-for="firstName"
       >
         <b-form-input
-          id="firstname"
+          id="firstName"
           v-model="$v.form.firstName.$model"
           type="text"
           :state="validateState('firstName')"
@@ -263,7 +263,11 @@ export default {
 
           {
             username: this.form.username,
-            password: this.form.password
+            firstname: this.form.firstName,
+            lastname: this.form.lastName,
+            country:this.form.country ,
+            password: this.form.password,
+            email:this.form.email
           }
         );
 

@@ -142,10 +142,10 @@ export default {
       imageState: null,
       titleState: null,
       minutesState: null,
-      likesState: null
-      // vegetarianState: null,
-      // veganState: null,
-      // glutenState: null,
+      likesState: null,
+      vegetarianState: null,
+      veganState: null,
+      glutenState: null
       // submittedRecipes: []
     };
   },
@@ -185,9 +185,9 @@ export default {
       this.titleState = null;
       this.minutesState = null;
       this.likesState = null;
-      // this.vegetarianState = null;
-      // this.veganState = null;
-      // this.glutenState = null;
+      this.vegetarianState = null;
+      this.veganState = null;
+      this.glutenState = null;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
@@ -230,7 +230,6 @@ export default {
         this.$router.push("/");
         // this.axios.defaulta.withCredentials = false;
       } catch (error) {
-        console.error("blabla:", error)
         console.error("There was an error adding the recipe:", error);
       }
       this.$nextTick(() => {
