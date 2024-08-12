@@ -44,6 +44,8 @@
 
 <script>
 import { computed } from 'vue';
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -63,8 +65,24 @@ export default {
     }
   },
   methods: {
-    toggleIcon() {
-      this.isFull = !this.isFull;
+    async toggleIcon() {
+      try {
+        axios.defaults.withCredentials = true;
+        const response = await axios.post(this.$root.store.server_domain+'/users/favorites', {
+          recipeId: this.recipe.id
+        });
+        console.log("this is response: ", response)
+
+        if (response.status === 200) {
+          this.isFull = !this.isFull;
+          const action = this.isFull ? 'added to' : 'removed from';
+          this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
+        }
+        axios.defaults.withCredentials = false;
+      } catch (error) {
+        // Handle error
+        console.error('Error toggling favorite:', error);
+      }
     },
     markRecipeAsViewed() {
       this.isViewed = true;

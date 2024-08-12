@@ -93,6 +93,7 @@
         variant="primary"
         style="width:100px;display:block;"
         class="mx-auto w-100"
+        :key="searchKey"
       >Search</b-button>
     </b-form>
 
@@ -105,9 +106,9 @@
         <b-dropdown-item @click="sortRecipes('liked')">Likes (High to Low)</b-dropdown-item>
         <b-dropdown-item @click="sortRecipes('time')">Preparation Time (Low to High)</b-dropdown-item>
       </b-dropdown>
-      <div v-if="recipes.length > 0">
+      <div v-if="sortedRecipes.length > 0" >
         <h2>Search Results</h2>
-        <div v-for="recipe in recipes" :key="recipe.id">
+        <div v-for="recipe in sortedRecipes" :key="recipe.id">
           <!-- Display recipe details -->
           <SearchRecipePreview class="recipePreview" :recipe="recipe" />
         </div>
@@ -142,7 +143,8 @@ export default {
     return {
       form: {
         search: "",
-        submitError: undefined
+        submitError: undefined,
+        sortOption: '',
       },
       recipesPerPage: 5,
       selectedFilter: "",
@@ -154,7 +156,8 @@ export default {
       intolerances: [], // Data property for intolerances filter
       recipes: [], // Array to hold search results
       searchPerformed: false, // Flag to indicate if search has been performed
-      sortOption: ""
+      sortOption: "",
+      searchKey: 0
     };
   },
   created() {
@@ -241,6 +244,7 @@ export default {
 
       this.searchPerformed = true; // Indicate search has been performed
       this.recipes = response.data; // Assuming response.data contains an array of recipes
+      this.searchKey += 1;
 
       // Save search results if user is logged in
       if (this.$root.loggedIn) {
@@ -270,12 +274,14 @@ export default {
         return;
       }
       // console.log("login method go");
-
+      this.searchPerformed = false;
       this.Search();
 
     },
     sortRecipes(option) {
+    console.log(`Sorting by ${option}`);
     this.sortOption = option;
+    this.searchKey += 1;
   }
     },
     computed: {
@@ -283,15 +289,17 @@ export default {
         // Create a copy of recipes to avoid mutating the original array
         let sorted = [...this.recipes];
         if (this.sortOption === "liked") {
+           console.log('sort according to like');
         // Sort by likes (high to low)
         sorted.sort((a, b) => b.likes - a.likes);
         } else if (this.sortOption === "time") {
           // Sort by prepTime (low to high)
           sorted.sort((a, b) => a.prepTime - b.prepTime);
         }
+        //this.recipes = sorted;
         return sorted;
       }
-  }
+  },
 };
 </script>
 
