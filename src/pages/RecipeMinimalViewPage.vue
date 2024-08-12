@@ -20,9 +20,6 @@
                 <div v-if="recipe.glutenFree">
                   <img src="../assets/gluten_free.png" class="tiny_logo" />
                 </div>
-                <button @click="toggleIcon" title="Strikethrough" class="icon-button" style="background-color: transparent; border-color: transparent; padding: 0;">
-                    <b-icon :icon="icon" class="no-background"></b-icon>
-                </button>
                 </div>
               </div>
               Summary:

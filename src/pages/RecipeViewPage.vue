@@ -50,6 +50,7 @@
 
 <script>
 import { mockGetRecipeFullDetails } from "../services/recipes.js";
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -123,6 +124,23 @@ export default {
 
       console.log("_recipe", _recipe);  // Add this line to log the transformed recipe data
       this.recipe = _recipe;
+      //added
+      const username = this.$root.store.username; // Assuming you have the username stored here
+      const favoriteCheck = await this.axios.get(
+        `${this.$root.store.server_domain}/users/favorites/check`,
+        {
+          params: {
+            username: username,
+            recipeId: this.$route.params.recipeId,
+          },
+          withCredentials: true,
+        }
+      );
+
+      if (favoriteCheck.data.isFavorite) {
+        this.isFull = true;
+      }
+      //
     } catch (error) {
       console.log(error);
     }
@@ -133,8 +151,24 @@ export default {
     }
   },
   methods: {
-    toggleIcon() {
-      this.isFull = !this.isFull;
+    async toggleIcon() {
+      try {
+        axios.defaults.withCredentials = true;
+        const response = await axios.post(this.$root.store.server_domain+'/users/favorites', {
+          recipeId: this.$route.params.recipeId,
+        });
+        console.log("this is response: ", response)
+
+        if (response.status === 200) {
+          this.isFull = !this.isFull;
+          const action = this.isFull ? 'added to' : 'removed from';
+          this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
+        }
+        axios.defaults.withCredentials = false;
+      } catch (error) {
+        // Handle error
+        console.error('Error toggling favorite:', error);
+      }
     },
   }
 };
@@ -169,10 +203,16 @@ export default {
 .no-background {
   background-color: transparent;
   color: #f0ad4e;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .recipe-header img {
   width: 200px; /* Adjust the width as needed */
   height: 200px; /* Adjust the height as needed */
+}
+
+.icon-button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 10; /* Ensure it's on top */
 }
 </style>

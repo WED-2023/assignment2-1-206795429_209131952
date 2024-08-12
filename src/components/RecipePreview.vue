@@ -50,6 +50,10 @@ export default {
       required: true
     },
   },
+  async created() {
+    this.checkIfViewed();
+    await this.checkIfFavorite();
+  },
   computed: {
     icon() {
       return this.isFull ? 'star-fill' : 'star';
@@ -59,6 +63,27 @@ export default {
     }
   },
   methods: {
+    async checkIfFavorite() {
+      try {
+        const username = this.$root.store.username;
+        const favoriteCheck = await axios.get(
+          `${this.$root.store.server_domain}/users/favorites/check`,
+          {
+            params: {
+              username: username,
+              recipeId: this.recipe.id,
+            },
+            withCredentials: true,
+          }
+        );
+
+        if (favoriteCheck.data.isFavorite) {
+          this.isFull = true;
+        }
+      } catch (error) {
+        console.error('Error checking favorite status:', error);
+      }
+    },
     async toggleIcon() {
       try {
         axios.defaults.withCredentials = true;
@@ -98,9 +123,6 @@ export default {
       this.isViewed = true;
     }
   }
-  },
-  created() {
-    this.checkIfViewed();
   },
 };
 
