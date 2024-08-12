@@ -109,6 +109,7 @@
       <div v-if="sortedRecipes.length > 0" >
         <h2>Search Results</h2>
         <div v-for="recipe in sortedRecipes" :key="recipe.id">
+          <!-- <div>console.log({{recipe}})</div> -->
           <!-- Display recipe details -->
           <SearchRecipePreview class="recipePreview" :recipe="recipe" />
         </div>
@@ -281,7 +282,6 @@ export default {
     sortRecipes(option) {
     console.log(`Sorting by ${option}`);
     this.sortOption = option;
-    this.searchKey += 1;
   }
     },
     computed: {
@@ -291,10 +291,10 @@ export default {
         if (this.sortOption === "liked") {
            console.log('sort according to like');
         // Sort by likes (high to low)
-        sorted.sort((a, b) => b.likes - a.likes);
+        sorted.sort((a, b) => b.popularity - a.popularity);
         } else if (this.sortOption === "time") {
           // Sort by prepTime (low to high)
-          sorted.sort((a, b) => a.prepTime - b.prepTime);
+          sorted.sort((a, b) => a.readyInMinutes - b.readyInMinutes);
         }
         //this.recipes = sorted;
         return sorted;
