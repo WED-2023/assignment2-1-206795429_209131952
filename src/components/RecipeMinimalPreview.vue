@@ -76,6 +76,7 @@ export default {
   height: 100%;
   position: relative;
   margin: 10px 0;
+  font-weight: bold;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -110,7 +111,7 @@ export default {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   text-align: center;
-
+  font-weight: bold;
 }
 
 .recipe-preview.viewed .recipe-footer .recipe-title,

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
     <h1 class="title">Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
     <br>
     <br>
     <h1 class="title">My Recipes Page</h1>
@@ -32,4 +32,5 @@ export default {
 .FavoriteRecipe {
   margin: 10px 0;
 }
+
 </style>

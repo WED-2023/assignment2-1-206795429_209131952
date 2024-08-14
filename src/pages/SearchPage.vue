@@ -1,12 +1,13 @@
 <template>
-  <div class="container">
-    <h1 class="title">Search Page</h1>
+<div class="container" style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
+  <h1 class="title">Search Page</h1>
     <b-form @submit.prevent="onSearch">
       <b-form-group
         id="input-group-search"
         label-cols-sm="3"
         label="Search:"
         label-for="search"
+        style="font-weight: bold;"
       >
         <b-form-input
           id="search"
@@ -25,6 +26,7 @@
         label-cols-sm="3"
         label="Recipes per page:"
         label-for="count"
+        style="font-weight: bold;"
       >
         <b-form-select
           id="count"
@@ -42,6 +44,8 @@
         label-cols-sm="3"
         label="Cuisines:"
         label-for="cuisines"
+        style="font-weight: bold;"
+
       >
         <b-button v-b-toggle.cuisines-collapse variant="link" class="dropdown-toggle">Select Cuisines</b-button>
         <b-collapse id="cuisines-collapse">
@@ -59,6 +63,7 @@
         label-cols-sm="3"
         label="Diets:"
         label-for="diets"
+        style="font-weight: bold;"
       >
         <b-button v-b-toggle.diets-collapse variant="link" class="dropdown-toggle">Select Diets</b-button>
         <b-collapse id="diets-collapse">
@@ -76,6 +81,7 @@
         label-cols-sm="3"
         label="Intolerances:"
         label-for="intolerances"
+        style="font-weight: bold;"
       >
         <b-button v-b-toggle.intolerances-collapse variant="link" class="dropdown-toggle">Select Intolerances</b-button>
         <b-collapse id="intolerances-collapse">
@@ -109,8 +115,6 @@
       <div v-if="sortedRecipes.length > 0" >
         <h2>Search Results</h2>
         <div v-for="recipe in sortedRecipes" :key="recipe.id">
-          <!-- <div>console.log({{recipe}})</div> -->
-          <!-- Display recipe details -->
           <SearchRecipePreview class="recipePreview" :recipe="recipe" />
         </div>
       </div>
@@ -230,7 +234,6 @@ export default {
 
     },
     sortRecipes(option) {
-    console.log(`Sorting by ${option}`);
     this.sortOption = option;
   }
     },
@@ -239,7 +242,6 @@ export default {
         // Create a copy of recipes to avoid mutating the original array
         let sorted = [...this.recipes];
         if (this.sortOption === "liked") {
-           console.log('sort according to like');
         // Sort by likes (high to low)
         sorted.sort((a, b) => b.popularity - a.popularity);
         } else if (this.sortOption === "time") {

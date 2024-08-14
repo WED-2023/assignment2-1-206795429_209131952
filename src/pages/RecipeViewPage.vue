@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1>{{ recipe.title }}</h1>
@@ -10,7 +10,7 @@
           <div class="wrapped">
             <div class="mb-3">
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.aggregateLikes }} likes</div>
+              <div>Likes: {{ recipe.popularity }} likes</div>
               <div>Servings: {{ recipe.servings }}</div>
               <div class="logo-container">
                 <div v-if="recipe.vegetarian">
@@ -90,7 +90,7 @@ export default {
         analyzedInstructions,
         instructions,
         extendedIngredients,
-        aggregateLikes,
+        popularity,
         readyInMinutes,
         image,
         vegetarian,
@@ -112,7 +112,7 @@ export default {
         _instructions,
         analyzedInstructions,
         extendedIngredients,
-        aggregateLikes,
+        popularity,
         readyInMinutes,
         image,
         vegetarian,
@@ -159,7 +159,7 @@ export default {
         });
         console.log("this is response: ", response)
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           this.isFull = !this.isFull;
           const action = this.isFull ? 'added to' : 'removed from';
           this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
@@ -215,4 +215,8 @@ export default {
   position: relative;
   z-index: 10; /* Ensure it's on top */
 }
+
+.container{
+    font-weight: bold;
+  }
 </style>

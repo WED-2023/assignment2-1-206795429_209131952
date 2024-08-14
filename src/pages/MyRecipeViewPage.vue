@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
       <div v-if="recipe">
         <div class="recipe-header mt-3 mb-4">
           <h1>{{ recipe.title }}</h1>
@@ -159,6 +159,10 @@ export default {
     background-color: transparent;
     color: #f0ad4e;
     font-size: 2rem;
+  }
+
+  .container{
+    font-weight: bold;
   }
   
   </style>

@@ -39,9 +39,6 @@
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
-        <!-- <b-form-group label="ID" label-for="id-input" invalid-feedback="ID is required" :state="idState">
-          <b-form-input id="id-input" v-model="recipe.id" :state="idState" required></b-form-input>
-        </b-form-group> -->
        
         <b-form-group label="Image URL" label-for="image-input" invalid-feedback="Image URL is required" :state="imageState">
           <b-form-input id="image-input" v-model="recipe.image" :state="imageState" required></b-form-input>
@@ -96,23 +93,7 @@
           </div>
           <b-button @click="addInstruction" variant="success">Add Instruction</b-button>
         </b-form-group>
-        
-       
-        <!-- <b-form-group label="Ingredients" label-for="ingredients-input">
-          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="d-flex mb-2">
-            <b-form-input v-model="recipe.ingredients[index]" required></b-form-input>
-            <b-button @click="removeIngredient(index)" variant="danger" class="ml-2">Remove</b-button>
-          </div>
-          <b-button @click="addIngredient" variant="success">Add Ingredient</b-button>
-        </b-form-group>
-        
-        <b-form-group label="Instructions" label-for="instructions-input">
-          <div v-for="(instruction, index) in recipe.instructions" :key="index" class="d-flex mb-2">
-            <b-form-textarea v-model="recipe.instructions[index]" required></b-form-textarea>
-            <b-button @click="removeInstruction(index)" variant="danger" class="ml-2">Remove</b-button>
-          </div>
-          <b-button @click="addInstruction" variant="success">Add Instruction</b-button>
-        </b-form-group> -->
+
       </form>
     </b-modal>
 
@@ -120,7 +101,6 @@
 </template>
 
 <script>
-// import { mockAddUserRecipe } from '@/services/user.js';
 import axios from 'axios';
 
 export default {
@@ -128,7 +108,6 @@ export default {
   data() {
     return {
       recipe: {
-        // id: '',
         servings: '',
         image: '',
         title: '',
@@ -140,7 +119,6 @@ export default {
         ingredients: [{ name: '', amount: '' }],
         instructions: ['']
       },
-      // idState: null,
       servingsState: null,
       imageState: null,
       titleState: null,
@@ -148,7 +126,6 @@ export default {
       vegetarianState: null,
       veganState: null,
       glutenState: null
-      // submittedRecipes: []
     };
   },
   methods: {
@@ -162,7 +139,6 @@ export default {
     },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
-      // this.idState = this.recipe.id ? true : false;
       this.imageState = this.recipe.image ? true : false;
       this.titleState = this.recipe.title ? true : false;
       this.minutesState = this.recipe.readyInMinutes ? true : false;
@@ -171,7 +147,6 @@ export default {
     },
     resetModal() {
       this.recipe = {
-        // id: '',
         servings: '',
         image: '',
         title: '',
@@ -184,7 +159,6 @@ export default {
         ingredients: [{ name: '', amount: '' }],
         instructions: ['']
       };
-      // this.idState = null;
       this.servingsState = null;
       this.imageState = null;
       this.titleState = null;
@@ -199,40 +173,15 @@ export default {
       // Trigger submit handler
       this.handleSubmit();
     },
-    // handleSubmit() {
-    //   // Exit when the form isn't valid
-    //   if (!this.checkFormValidity()) {
-    //     return;
-    //   }
-    //   this.RecipeSeccssfullyAdded()
-    //   // Push the recipe to submitted recipes
-    //   this.submittedRecipes.push({ ...this.recipe });
-    //   // Hide the modal manually
-    //   this.$nextTick(() => {
-    //     this.$bvModal.hide('modal-prevent-closing');
-    //   });
-    // },
-    // RecipeSeccssfullyAdded() {
-    //   const result = mockAddUserRecipe(this.recipe);
-    //   this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
-    //   this.$router.push("/").catch(() => {
-    //     this.$forceUpdate();
-    //   });
-    // },
-    // addIngredient() {
-    //   this.recipe.ingredients.push('');
-    // },
     async handleSubmit() {
       if (!this.checkFormValidity()) {
         return;
       }
       try {
-        // this.axios.defaulta.withCredentials = true;
         const response = await axios.post(this.$root.store.server_domain + '/users/my_recipes', this.recipe);
         console.log("Recipe added successfully:", response.data);
         this.$root.toast("Add Recipe", "Recipe Added successfully", "success");
         this.$router.push("/");
-        // this.axios.defaulta.withCredentials = false;
       } catch (error) {
         console.error("There was an error adding the recipe:", error);
       }
@@ -266,7 +215,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-}
+  background-image: url('@/assets/background.jpg'); /* Path to your image */ 
+  background-size: cover; /* Makes the image cover the entire element */ 
+  background-position: center; /* Centers the image */ 
+  background-repeat: no-repeat; /* Prevents the image from repeating */ 
+  background-attachment: fixed;
+  width: 100%; /* Makes the div take up the full width of the parent element */ }  
+
 
 #nav {
   position: fixed;

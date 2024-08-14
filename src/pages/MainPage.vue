@@ -92,11 +92,13 @@ export default {
 
 .left-column {
   border-right: 1px solid #ccc;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
 }
 
 .right-column {
-  background-color: #f1f1f1;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
 }
 
 .RandomRecipes {
@@ -108,5 +110,14 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+}
+
+.title{
+  font-size: 2rem; /* Adjust the size as needed */
+  color: #2c3e50; /* Text color */
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  padding: 5px 5px; /* Adds space around the text */
+  display: inline-block;
+  border-radius: 10px;
 }
 </style>

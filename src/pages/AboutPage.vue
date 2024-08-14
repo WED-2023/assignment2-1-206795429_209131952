@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <b-container>
+    <b-container style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.7);">
       <b-row>
         <b-col>
           <h1>About Foody Shmoody</h1>
@@ -42,7 +42,6 @@ export default {
 <style scoped>
 .about {
   padding: 20px;
-  background-color: #f8f9fa;
 }
 
 .about h1 {
@@ -67,4 +66,5 @@ export default {
 .about a:hover {
   text-decoration: underline;
 }
+
 </style>

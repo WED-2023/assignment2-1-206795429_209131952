@@ -73,7 +73,7 @@ export default {
         });
         console.log("this is response: ", response)
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           this.isFull = !this.isFull;
           const action = this.isFull ? 'added to' : 'removed from';
           this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
@@ -108,6 +108,7 @@ export default {
   height: 100%;
   position: relative;
   margin: 10px 0;
+  font-weight: bold;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -140,6 +141,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  font-weight: bold;
 }
 .recipe-preview.viewed .recipe-footer .recipe-title,
 .recipe-preview.viewed .recipe-footer ul.recipe-overview li {
@@ -173,14 +175,17 @@ export default {
   text-align: left;
   margin-top: 10px;
   font-size: 10pt;
+  font-weight: bold;
 }
 .instructions h4 {
   margin: 0;
   font-size: 12pt;
   text-align: center;
+  font-weight: bold;
 }
 .instructions ol {
   padding-left: 20px;
   margin: 5px 0;
+
 }
 </style>

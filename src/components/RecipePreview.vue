@@ -91,7 +91,7 @@ export default {
         });
         console.log("this is response: ", response)
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           this.isFull = !this.isFull;
           const action = this.isFull ? 'added to' : 'removed from';
           this.$root.toast(`${action} favorites`, `Recipe successfully ${action} your favorites`, "success");
@@ -134,6 +134,7 @@ export default {
   height: 100%;
   position: relative;
   margin: 10px 0;
+  font-weight: bold;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
