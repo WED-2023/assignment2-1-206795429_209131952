@@ -2,9 +2,10 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info" class="sticky-top">
       <img src="../src/logo.png" class="logo">
-      <b-navbar-brand :to="{ name: 'main' }" class="navbar-brand" >Foody Shmoody Main</b-navbar-brand>
+      <b-navbar-brand class="navbar-brand" >Foody Shmoody</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
+          <b-nav-item :to="{ name: 'main' }">Main</b-nav-item>
           <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
           <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         </b-navbar-nav>

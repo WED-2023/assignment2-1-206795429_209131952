@@ -23,7 +23,7 @@
           User name length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          User name alpha
+          User name needs to be only alpha
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -109,6 +109,16 @@
         >
           Have length between 5-10 characters long
         </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.ContainsNumber"
+        >
+          Have at least one digit
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.ContainsSpecialChar"
+        >
+          Have at least one special char
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -193,6 +203,8 @@ import {
   email
 } from "vuelidate/lib/validators";
 import { mockRegister } from "../services/auth.js";
+const ContainsNumber = (value) => /\d/.test(value); 
+const ContainsSpecialChar = (value) => /[!@#$%^&*(),.?":{}|<>]/.test(value); 
 export default {
   name: "Register",
   data() {
@@ -232,7 +244,9 @@ export default {
       },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
+        length: (p) => minLength(5)(p) && maxLength(10)(p),
+        ContainsSpecialChar,
+        ContainsNumber,
       },
       confirmedPassword: {
         required,
