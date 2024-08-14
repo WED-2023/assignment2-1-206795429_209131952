@@ -41,7 +41,6 @@
 <script>
 import axios from 'axios';
 import RecipePreviewList from "../components/RecipePreviewList";
-// import recipes from "../assets/mocks/recipe_preview.json";
 export default {
   components: {
     RecipePreviewList
@@ -53,26 +52,7 @@ export default {
     };
   },
   methods: {
-  //   fetchRandomRecipe() {
-  //   const shuffled = this.allRecipes.sort(() => 0.5 - Math.random());
-  //   this.randomRecipes = shuffled.slice(0, 3);
-  // }
-  // async fetchRandomRecipe() {
-  //     try {
-  //       // const response = await axios.get(`${this.$root.store.server_domain}/recipes/random`);
-  //       // this.randomRecipes = response.data.recipes;
-  //       // Emit event to update recipes in RecipePreviewList
-  //       this.$refs.randomRecipes.updateRecipes();
-  //     } catch (error) {
-  //       console.error('Error fetching random recipes:', error);
-  //     }
-  //   }
-  // },
-    // handleUpdateRecipes(newRecipes) {
-    //   this.randomRecipes = newRecipes;
-    // }
     async fetchRandomRecipe() {
-      // Call fetchRandomRecipes method in RecipePreviewList.vue through ref
       await this.$refs.randomRecipesList.updateRecipes();
     },
     handleUpdateRecipes(newRecipes) {

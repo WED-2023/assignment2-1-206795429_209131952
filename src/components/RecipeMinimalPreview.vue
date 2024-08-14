@@ -56,7 +56,6 @@ export default {
       sessionStorage.setItem(`recipe-viewed-${this.recipe.id}`, 'true');
   },
   checkIfViewed() {
-    // this.isViewed = false;
     const viewed = sessionStorage.getItem(`recipe-viewed-${this.recipe.id}`);
     if (viewed) {
       this.isViewed = true;

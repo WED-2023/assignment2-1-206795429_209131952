@@ -32,7 +32,6 @@
 </template>
 
 <script>
-// import { mockAddFavorite } from '@/services/user';
 import axios from 'axios';
 import store from '@/store';
 import { computed } from 'vue';
@@ -117,7 +116,6 @@ export default {
       }
     },
   checkIfViewed() {
-    // this.isViewed = false;
     const viewed = sessionStorage.getItem(`recipe-viewed-${this.recipe.id}`);
     if (viewed) {
       this.isViewed = true;
@@ -126,31 +124,6 @@ export default {
   },
 };
 
- 
-
-    // id: {
-    //   type: Number,
-    //   required: true
-    // },
-    // title: {
-    //   type: String,
-    //   required: true
-    // },
-    // readyInMinutes: {
-    //   type: Number,
-    //   required: true
-    // },
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // aggregateLikes: {
-    //   type: Number,
-    //   required: false,
-    //   default() {
-    //     return undefined;
-    //   }
-    // }
  
 </script>
 
@@ -204,38 +177,6 @@ export default {
   font-weight: bold; /* Make font bold */
 }
 
-
-/* .recipe-preview .recipe-footer ul.recipe-overview {
-  padding: 5px 10px;
-  width: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1 auto;
-  -ms-flex: 1 auto;
-  flex: 1 auto;
-  table-layout: fixed;
-  margin-bottom: 0px;
-}
-
-.recipe-preview .recipe-footer ul.recipe-overview li {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  width: 90px;
-  display: table-cell;
-  text-align: center;
-} */
 
 .recipe-preview .recipe-footer ul.recipe-overview {
   padding: 5px 10px;

@@ -41,8 +41,6 @@
           </div>
           </div>
         </div>
-        <!-- {{ $route.params }}
-        {{ recipe }} -->
       </div>
   </template>
   
@@ -144,9 +142,7 @@ export default {
     width: 500px;
     height: 300px
   }
-  /* .recipe-header{
-  
-  } */
+
   .tiny_logo {
     width:35px;
     height: 35px;

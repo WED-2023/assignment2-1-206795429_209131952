@@ -130,7 +130,6 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
-// import { mockGetRecipesPreviewFromSearch } from "../services/recipes.js";
 import SearchRecipePreview from "../components/SearchRecipePreview.vue";
 import { cuisines, diets, intolerances } from '../assets/filters.js';
 import axios from 'axios';
@@ -162,17 +161,6 @@ export default {
     };
   },
   created() {
-  //   // Check if user is logged in and load last search if true
-  // if (this.$root.loggedIn) {
-  //   this.loadLastSearch();
-  // }
-  //   // Populate the filters from the imported file
-  //   this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
-  //   this.diets = diets.map(d => ({ label: d.text, value: d.value }));
-  //   this.intolerances = intolerances.map(i => ({ label: i.text, value: i.value }));
-  //   if (this.$root.loggedIn) {
-  //     this.loadLastSearch();
-  //   }
     // Populate the filters from the imported file
     this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
     this.diets = diets.map(d => ({ label: d.text, value: d.value }));
@@ -194,54 +182,11 @@ export default {
   },
 
   methods: {
-    async loadLastSearch() {
-    try {
-      // Make an API call to fetch last search results
-      const response = await axios.get(this.$root.store.server_domain+'/recipes/last-search'); // Adjust API endpoint as per your backend implementation
-      this.recipes = response.data.recipes; // Assuming your response contains a 'recipes' array
-      this.searchPerformed = true; // Indicate search has been performed
-    } catch (error) {
-      console.error('Error loading last search:', error);
-      // Handle error as needed
-    }
-  },
-
-        validateState(param) {
+      validateState(param) {
       const { $dirty, $error } = this.$v.form[param];
       return $dirty ? !$error : null;
     },
     
-    //   async Search() {
-    //   try {
-        
-    //     const response = await this.axios.post(
-    //       this.$root.store.server_domain +"/Login",
-
-
-    //       {
-    //         username: this.form.username,
-    //         password: this.form.password
-    //       }
-    //     );
-
-    //     const success = true; // modify this to test the error handling
-    //     // const response = mockSearch(this.form.search, success);
-
-    //     // const response = mockGetRecipesPreviewFromSearch(5);
-    //     this.searchPerformed = true; // Set searchPerformed to true after search
-
-    //     console.log(response);
-    //     this.$root.loggedIn = true;
-    //     console.log(this.$root.store.login);
-    //     this.$root.store.login(this.form.username);
-    //     this.$router.push("/");
-    //     const recipes = response.data.recipes; // Assuming your response contains a 'recipes' array
-    //     this.recipes = recipes
-    //   } catch (err) {
-    //     console.log(err.response);
-    //     this.form.submitError = err.response.data.message;
-    //   }
-    // },
     async Search() {
     try {
       const response = await axios.get(this.$root.store.server_domain+`/recipes/search`, {
@@ -258,14 +203,9 @@ export default {
       this.recipes = response.data; // Assuming response.data contains an array of recipes
       this.searchKey += 1;
 
-      // Save search results if user is logged in
-      // if (this.$root.loggedIn) {
-      //   this.saveLastSearch(response.data);
-      // }
       sessionStorage.setItem('lastSearchResults', JSON.stringify(this.recipes));
     } catch (err) {
       console.error('Error searching recipes:', err);
-      // Handle error here, such as setting an error message
     }
   },
 
@@ -280,13 +220,11 @@ export default {
   },
 
     onSearch() {
-      // console.log("login method called");
       this.form.submitError = undefined;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("login method go");
       this.searchPerformed = false;
       this.Search();
 

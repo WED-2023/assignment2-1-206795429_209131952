@@ -44,17 +44,8 @@
           );
           const recipes = response.data;
           this.recipes = recipes;
-          //this.$emit('update:myRecipes', recipes);
-  
-          // const amountToFetch = 3; // Set this to how many recipes you want to fetch
-          // const response = mockGetMyRecipesPreview(amountToFetch);
-  
-  
           console.log(response);
-          //const recipes = response.data.recipes;
           console.log(recipes);
-          //this.recipes = [];
-          // this.recipes.push(...recipes);
         } catch (error) {
           console.log(error);
         }
