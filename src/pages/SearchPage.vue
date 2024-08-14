@@ -162,16 +162,27 @@ export default {
     };
   },
   created() {
-    // Check if user is logged in and load last search if true
-  if (this.$root.loggedIn) {
-    this.loadLastSearch();
-  }
+  //   // Check if user is logged in and load last search if true
+  // if (this.$root.loggedIn) {
+  //   this.loadLastSearch();
+  // }
+  //   // Populate the filters from the imported file
+  //   this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
+  //   this.diets = diets.map(d => ({ label: d.text, value: d.value }));
+  //   this.intolerances = intolerances.map(i => ({ label: i.text, value: i.value }));
+  //   if (this.$root.loggedIn) {
+  //     this.loadLastSearch();
+  //   }
     // Populate the filters from the imported file
     this.cuisines = cuisines.map(c => ({ label: c.text, value: c.value }));
     this.diets = diets.map(d => ({ label: d.text, value: d.value }));
     this.intolerances = intolerances.map(i => ({ label: i.text, value: i.value }));
-    if (this.$root.loggedIn) {
-      this.loadLastSearch();
+
+    // Check sessionStorage for last search results
+    const savedResults = sessionStorage.getItem('lastSearchResults');
+    if (savedResults) {
+      this.recipes = JSON.parse(savedResults);
+      this.searchPerformed = true;
     }
   },
   validations: {
@@ -248,9 +259,10 @@ export default {
       this.searchKey += 1;
 
       // Save search results if user is logged in
-      if (this.$root.loggedIn) {
-        this.saveLastSearch(response.data);
-      }
+      // if (this.$root.loggedIn) {
+      //   this.saveLastSearch(response.data);
+      // }
+      sessionStorage.setItem('lastSearchResults', JSON.stringify(this.recipes));
     } catch (err) {
       console.error('Error searching recipes:', err);
       // Handle error here, such as setting an error message

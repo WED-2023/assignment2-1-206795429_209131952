@@ -153,6 +153,7 @@ export default {
   methods: {
     Logout() {
       this.$root.store.logout();
+      sessionStorage.removeItem('lastSearchResults');
       this.$root.toast("Logout", "User logged out successfully", "success");
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
